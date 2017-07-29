@@ -5,13 +5,60 @@
     <entry>
       <title><![CDATA[好用的Shell--ZSH]]></title>
       <url>/2017/07/29/zsh/</url>
-      <content type="html"><![CDATA[<h3 id="zsh的安装与配置"><a href="#zsh的安装与配置" class="headerlink" title="zsh的安装与配置"></a>zsh的安装与配置</h3><h4 id="1-shell的介绍："><a href="#1-shell的介绍：" class="headerlink" title="1.shell的介绍："></a>1.shell的介绍：</h4><p><strong>在Mac或者Linux系统中最不可或缺的应该就是命令行了，而使用命令行当然就离不开shell了，那么shell是什么呢？</strong></p>
+      <content type="html"><![CDATA[<h3 id="ZSH的安装与配置"><a href="#ZSH的安装与配置" class="headerlink" title="ZSH的安装与配置"></a>ZSH的安装与配置</h3><h4 id="1-Shell的介绍"><a href="#1-Shell的介绍" class="headerlink" title="1.Shell的介绍"></a>1.Shell的介绍</h4><p><strong>在Mac或者Linux系统中最不可或缺的应该就是命令行了，而使用命令行当然就离不开shell了，那么shell是什么呢？</strong></p>
 <p><strong>shell是Linux/Unxi的一个外壳，shell负责与内核进行交互，接收用户或其他应用程序的命令，然后把这些命令转化成内核能理解的语言，传给内核，内核再进行命令的处理和执行，处理执行完后再将结果返回给用户或应用程序</strong></p>
 <p><strong>Linux/Unxi提供多种shell，如bash、csh、sh、zsh等，如果想要查看你的系统中有多少种shell，执行如下命令：</strong></p>
-<blockquote>
-<p>cat /etc/shells</p>
-</blockquote>
-<p><img src="img/1.png" alt="1"></p>
+<pre><code>cat /etc/shells
+</code></pre><p><img src="https://yzczzh.github.io/img/zsh/1.png" alt="1"></p>
+<h4 id="2-ZSH的安装"><a href="#2-ZSH的安装" class="headerlink" title="2.ZSH的安装"></a>2.ZSH的安装</h4><p><strong>zsh也是shell的一种，Linux和Mac不同的地方在于：Mac下预装了zsh，而Linux/Unxi下并没有需要自行安装，所以如果你是Mac用户，那么你的zsh就不需要安装了，如果你是Linux或Unxi用户就需要先行安装zsh，具体操作如下：</strong></p>
+<p><strong>Redhat Linux用户执行</strong></p>
+<pre><code>sudo yum install zsh
+</code></pre><p><strong>Ubuntu Linux用户执行</strong></p>
+<pre><code>sudo apt-get install zsh
+</code></pre><p><strong>安装完之后，我们还需要将zsh设置成我们默认的shell，以代替原来使用的shell，之后在终端执行如下命令</strong></p>
+<pre><code>chsh -s /bin/zsh
+</code></pre><p><strong><em>注这一步主要看zsh的路径，如果路径不是’/bin/zsh’而是’/usr/local/bin/zsh’，在执行命令是路径就要改变</em></strong></p>
+<h4 id="3-oh-my-zsh的安装"><a href="#3-oh-my-zsh的安装" class="headerlink" title="3.oh-my-zsh的安装"></a>3.oh-my-zsh的安装</h4><p><strong>zsh之所以现在被大众接受是因为Zsh可配置性强，用户可以自定义配置，个性化强，而且zsh有着极其强大的tab不全功能；但是在zsh初期却很少有人愿意使用它，因为zsh的配置相当复杂使许多人望而却步。</strong></p>
+<p><strong>但是国外有一位大牛写出了一个项目使得Zsh的配置变得很简单只需要几步就可以完成，这个项目就是“oh-my-zsh”</strong></p>
+<p><strong>接下来安装oh-my-zsh，oh-my-zsh可以自动安装或者手动安装</strong></p>
+<p><strong>自动安装</strong></p>
+<pre><code>wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+</code></pre><p><strong>手动安装</strong></p>
+<pre><code>git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+</code></pre><p><strong>这样oh-my-zsh就算安装完成了，现在在打开终端，你的shell就变成了zsh的天下了～</strong></p>
+<p><strong>zsh的配置几乎全在~/.zshrc文件下,如果想对shell进行进一步的配置或进行美化就都需要在~/.zshrc文件下进行了</strong></p>
+<p><strong>oh-my-zsh社区非常的完善，有200+的插件，140+的主题，你可以在社区中找到你需要的插件和你喜爱的主题，当然如果你需要的插件主题社区中并没有你也可以自己试着去写一些，将zsh配置修改成自己喜欢的样子。一款优秀的项目，其优秀之处就在于他功能是强大的、可扩展的。这样配置过后，没给人的zsh可能都不一样，没给人都能找到最适合自己的shell～</strong></p>
+<h3 id="ZSH的使用"><a href="#ZSH的使用" class="headerlink" title="ZSH的使用"></a>ZSH的使用</h3><p><strong>1、兼容 bash，原来使用bash的，现在可以无压力使用zsh</strong></p>
+<p><strong>2、强大的历史纪录功能，输入 grep 然后用上下箭头可以翻阅你执行的所有 grep 命令。</strong></p>
+<p><strong>3、智能拼写纠正</strong></p>
+<p><strong>4、补全功能强大：路径补全、命令补全，命令参数补全，插件内容补全等等。</strong></p>
+<p><strong>5、智能跳转，安装了autojump之后，zsh 会自动记录你访问过的目录，通过 j + 目录名 可以直接进行目录跳转，而且目录名支持模糊匹配和自动补全。j –stat 可以看你的历史路径库。</strong></p>
+<p><strong>6、目录浏览和跳转：输入 d，即可列出你在这个会话里访问的目录列表，输入列表前的序号，即可直接跳转。</strong></p>
+<p><strong>7、在当前目录下输入 .. 或 … ，或直接输入当前目录名都可以跳转，你甚至不再需要输入 cd 命令了。</strong></p>
+<p><strong>8、通配符搜索</strong></p>
+<p><strong>9、更强的别名</strong></p>
+<p><strong>10、插件支持</strong></p>
+<p><strong><em>注：有些使用的优点不太会描述就借鉴了一些牛人的文章，具体的使用优点可以看下链接:<a href="https://zhuanlan.zhihu.com/p/19556676?columnSlug=mactalk" target="_blank" rel="external">终极 Shell——ZSH</a></em></strong></p>
+<h3 id="ZSH的插件"><a href="#ZSH的插件" class="headerlink" title="ZSH的插件"></a>ZSH的插件</h3><p><strong>zsh下载插件时需要注意的一点是：下载好插件后一定要在~/.zshrc文件中进行配置，要将插件的名字填写套配置文件的plugins选项中</strong></p>
+<p><img src="https://yzczzh.github.io/img/zsh/2.png" alt="2"></p>
+<p><strong>主要介绍一款插件：autojump，此插件使得zsh的功能更加强大，它会在你每次启动命令时记录你当前位置，并把它添加进它自身的数据库中。这样，某些目录比其它一些目录添加的次数多，这些目录一般就代表你最重要的目录，而它们的“权重”也会增大</strong></p>
+<p><strong>下面介绍如何下载autojump及其配置：</strong></p>
+<p><strong>1.如果你是Mac用户，使用homebrew下载安装autojump</strong></p>
+<pre><code>brew install autojump
+</code></pre><p><strong>2.如果你是Linux用户，下载autojump</strong></p>
+<pre><code>wget https://github.com/downloads/joelthelion/autojump/autojump_v21.1.2.tar.gz
+</code></pre><p><strong>下载完后解压缩，解压缩完后，进入目录，执行</strong></p>
+<pre><code>./install.sh
+</code></pre><p><strong>3.进入.zshrc文件，将下面代码加入</strong></p>
+<pre><code>[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] &amp;&amp; . ~/.autojump/etc/profile.d/autojump.sh
+</code></pre><p><strong>4.执行命令</strong></p>
+<pre><code>source ~/.zshrc
+</code></pre><h3 id="ZSH的主题"><a href="#ZSH的主题" class="headerlink" title="ZSH的主题"></a>ZSH的主题</h3><p><strong>oh-my-zsh社区提供了非常多的主题供用户进行选择，使用主题也非常的方便，我会在下面附上一个详细的配置主题链接供大家参考</strong></p>
+<p><strong><em><a href="https://zhuanlan.zhihu.com/p/26373052" target="_blank" rel="external">mac下oh-my-zsh的配置</a></em></strong></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>zsh这款shell是我最近自己安装配置完成，并经过了一段时间的时间后，觉得zsh真的强大好用，真心推荐给大家使用。</strong></p>
+<p><strong>安装配置zsh、oh-my-zsh以及安装配置插件和主题时我也遇到了很多的问题，最后这些问题也被我一一的解决，并把经验与体会写了下来和大家分享，我觉得当一个问题出现了，你自己去解决时，要注重解决问题的过程，遇到问题多思考，多查找资料，尽量通过自己去解决问题，这才是最重要的～～</strong></p>
 ]]></content>
       
         <categories>
@@ -23,9 +70,9 @@
         
         <tags>
             
-            <tag> 日常 </tag>
+            <tag> zsh </tag>
             
-            <tag> 初 </tag>
+            <tag> 一 </tag>
             
         </tags>
         
@@ -71,14 +118,14 @@
     </entry>
     
     <entry>
-      <title><![CDATA[关于]]></title>
-      <url>/about/index.html</url>
+      <title><![CDATA[photo]]></title>
+      <url>/photo/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[photo]]></title>
-      <url>/photo/index.html</url>
+      <title><![CDATA[关于]]></title>
+      <url>/about/index.html</url>
       <content type="html"></content>
     </entry>
     
