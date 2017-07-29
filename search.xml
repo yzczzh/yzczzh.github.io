@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[好用的shell--ZSH]]></title>
+      <url>/2017/07/29/zsh/</url>
+      <content type="html"><![CDATA[<p>####zsh的安装与配置<br><strong>1.shell的介绍：</strong></p>
+<p>在Mac或者Linux系统中最不可或缺的应该就是命令行了，而使用命令行当然就离不开shell了，那么shell是什么呢？shell是Linux/Unxi的一个外壳，shell负责与内核进行交互，</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 工具 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 日常 </tag>
+            
+            <tag> 初 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[yzczzh]]></title>
+      <url>/2017/07/28/yzczzh/</url>
+      <content type="html"><![CDATA[<p><strong>终于建好了属于自己的博客，感觉很不错，一直想建一个自己的博客记录自己的学习经历和心得体会，由于种种原因一直拖延到现在，终于建立起来了~</strong></p>
+<p><strong>博客是使用HEXO + GitHub搭建起来的，搭建起来很方便，选模板和修改模板花了好长时间，但是做出来的效果还是不错的，感觉辛苦没有白费，HEXO + GitHub的命令行操作也非常的方便，创建文档，部署就可以通过很简单的几个命令就可以实现；主题的选择和改进网上也有详细的教程(但是有些主题需要用到的插件中的某些方法node.js已经放弃使用了，这些地方需要注意)</strong></p>
+<p><strong>虽然花了很长时间但是也学会了很多，博客搭建起来之后，我也会陆陆续续的更新自己的博客，让博客记录我的学习历程和经验~</strong></p>
+<p><strong>下面会附上我在搭建博客时借鉴的文章及查阅的资料，还要感谢<a href="http://www.z1blog.com" target="_blank" rel="external">zil0ng师傅</a>的帮助，他的博客也在我的友链中，大家可以去浏览，谢谢大家，希望大家多多关注，我也会及时努力的更新，让所有人也让自己看到我的进步~</strong></p>
+<p><strong><em>1.建站链接</em></strong><br><a href="http://blog.csdn.net/qq_30379689/article/details/52854003" target="_blank" rel="external">Mac下使用Hexo搭建个人博客</a></p>
+<p><strong><em>2.主题链接</em></strong></p>
+<p><a href="http://blog.csdn.net/chwshuang/article/details/52350463" target="_blank" rel="external">Hexo安装主题</a></p>
+<p><a href="https://hexo.io/themes/" target="_blank" rel="external">Themes</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 日常 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 日常 </tag>
+            
+            <tag> 初 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+  
+  
+    
+    <entry>
+      <title><![CDATA[friends]]></title>
+      <url>/friends/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[关于]]></title>
+      <url>/about/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[photo]]></title>
+      <url>/photo/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+  
+</search>
