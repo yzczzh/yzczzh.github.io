@@ -3,10 +3,15 @@
   
     
     <entry>
-      <title><![CDATA[好用的shell--ZSH]]></title>
+      <title><![CDATA[好用的Shell--ZSH]]></title>
       <url>/2017/07/29/zsh/</url>
-      <content type="html"><![CDATA[<p>####zsh的安装与配置<br><strong>1.shell的介绍：</strong></p>
-<p>在Mac或者Linux系统中最不可或缺的应该就是命令行了，而使用命令行当然就离不开shell了，那么shell是什么呢？shell是Linux/Unxi的一个外壳，shell负责与内核进行交互，</p>
+      <content type="html"><![CDATA[<h3 id="zsh的安装与配置"><a href="#zsh的安装与配置" class="headerlink" title="zsh的安装与配置"></a>zsh的安装与配置</h3><h4 id="1-shell的介绍："><a href="#1-shell的介绍：" class="headerlink" title="1.shell的介绍："></a>1.shell的介绍：</h4><p><strong>在Mac或者Linux系统中最不可或缺的应该就是命令行了，而使用命令行当然就离不开shell了，那么shell是什么呢？</strong></p>
+<p><strong>shell是Linux/Unxi的一个外壳，shell负责与内核进行交互，接收用户或其他应用程序的命令，然后把这些命令转化成内核能理解的语言，传给内核，内核再进行命令的处理和执行，处理执行完后再将结果返回给用户或应用程序</strong></p>
+<p><strong>Linux/Unxi提供多种shell，如bash、csh、sh、zsh等，如果想要查看你的系统中有多少种shell，执行如下命令：</strong></p>
+<blockquote>
+<p>cat /etc/shells</p>
+</blockquote>
+<p><img src="img/1.png" alt="1"></p>
 ]]></content>
       
         <categories>
@@ -66,14 +71,14 @@
     </entry>
     
     <entry>
-      <title><![CDATA[关于]]></title>
-      <url>/about/index.html</url>
+      <title><![CDATA[photo]]></title>
+      <url>/photo/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[photo]]></title>
-      <url>/photo/index.html</url>
+      <title><![CDATA[关于]]></title>
+      <url>/about/index.html</url>
       <content type="html"></content>
     </entry>
     
