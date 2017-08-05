@@ -134,6 +134,8 @@ heroku buildpacks:set hero/php
 <pre><code>heroku config:set APP_KEY=&lt;your_app_key&gt;
 </code></pre><p><strong>(4)配置基本完成，将代码推送到 Heroku 上</strong></p>
 <pre><code>git push heroku master
+</code></pre><p><strong>(5)推送成功后，快速打开线上应用</strong></p>
+<pre><code>heroku open   
 </code></pre><h5 id="3-出现了问题"><a href="#3-出现了问题" class="headerlink" title="3.出现了问题"></a>3.出现了问题</h5><p><strong>在使用 Heroku 的过程中如果出现了问题，则可以使用下面命令来输出生产环境上的日志进行排错</strong></p>
 <pre><code>heroku logs
 </code></pre><p><strong><em>注：这些只是我总结的部分命令，在之后的学习当中如果遇到有关 Heroku 的命令行操作会进行及时的补充</em></strong></p>
