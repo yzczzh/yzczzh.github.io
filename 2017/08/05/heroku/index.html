@@ -152,14 +152,14 @@
     
   </div>
   <div class="post-page-content">
-  <h2 id="Heroku-命令"><a href="#Heroku-命令" class="headerlink" title="Heroku 命令"></a>Heroku 命令</h2><h3 id="0x01-Heorku-介绍"><a href="#0x01-Heorku-介绍" class="headerlink" title="0x01 Heorku 介绍"></a>0x01 Heorku 介绍</h3><p><strong>最近在学习 Laravel 相关的开发知识，当然知识简单的涉及一点，前端什么的还真是不怎么了解，但是还是想熟悉一下开发的整体流程，大致的学习一下，在接触的过程中发现基础的代码部署全部都是由命令行进行操作的，其中就包括 <code>Heroku</code> 的命令号操作。那么 <code>Heroku</code> 又是什么呢？</strong></p>
+  <h3 id="Heroku-命令"><a href="#Heroku-命令" class="headerlink" title="Heroku 命令"></a>Heroku 命令</h3><h4 id="0x01-Heorku-介绍"><a href="#0x01-Heorku-介绍" class="headerlink" title="0x01 Heorku 介绍"></a>0x01 Heorku 介绍</h4><p><strong>最近在学习 Laravel 相关的开发知识，当然知识简单的涉及一点，前端什么的还真是不怎么了解，但是还是想熟悉一下开发的整体流程，大致的学习一下，在接触的过程中发现基础的代码部署全部都是由命令行进行操作的，其中就包括 <code>Heroku</code> 的命令号操作。那么 <code>Heroku</code> 又是什么呢？</strong></p>
 <p><strong>Heroku 是一个支持多种语言的云平台。Heroku 作为最开始的云平台之一，从 2007 年 6 月起开始开发，当时它仅支持 Ruby，后来增加了对 Java、Node.js、Scala、Clojure、Python 以及 PHP 和 Perl 的支持。由于其应用部署流程异常简单，因此倍受广大开发者欢迎。</strong></p>
 <p><strong>在开发过程中，可以使用 Heroku 方便地进行项目的云部署。</strong></p>
-<h3 id="0x02-Heroku-命令介绍"><a href="#0x02-Heroku-命令介绍" class="headerlink" title="0x02 Heroku 命令介绍"></a>0x02 Heroku 命令介绍</h3><h4 id="1-登录命令"><a href="#1-登录命令" class="headerlink" title="1.登录命令"></a>1.登录命令</h4><p><strong>(1)登录 Heroku 账号</strong></p>
+<h4 id="0x02-Heroku-命令介绍"><a href="#0x02-Heroku-命令介绍" class="headerlink" title="0x02 Heroku 命令介绍"></a>0x02 Heroku 命令介绍</h4><h5 id="1-登录命令"><a href="#1-登录命令" class="headerlink" title="1.登录命令"></a>1.登录命令</h5><p><strong>(1)登录 Heroku 账号</strong></p>
 <pre><code>heroku login
 </code></pre><p><strong>(2)添加 SSH Key 到 Heroku 上</strong></p>
 <pre><code>heroku keys:add
-</code></pre><h4 id="2-上线命令"><a href="#2-上线命令" class="headerlink" title="2.上线命令"></a>2.上线命令</h4><p><strong>(1)创建一个 Heroku App</strong></p>
+</code></pre><h5 id="2-上线命令"><a href="#2-上线命令" class="headerlink" title="2.上线命令"></a>2.上线命令</h5><p><strong>(1)创建一个 Heroku App</strong></p>
 <pre><code>heroku create
 </code></pre><p><strong>(2)配置 <code>Procfile</code> 文件</strong></p>
 <p><strong>通过配置 <code>Procfile</code> 文件来告诉 Heroku 应当使用什么命令来启动 Web 服务器。接着还需要将该文件纳入到 Git 版本控制中</strong></p>
@@ -174,7 +174,7 @@ heroku buildpacks:set hero/php
 <pre><code>heroku config:set APP_KEY=&lt;your_app_key&gt;
 </code></pre><p><strong>(4)配置基本完成，将代码推送到 Heroku 上</strong></p>
 <pre><code>git push heroku master
-</code></pre><h4 id="3-出现了问题"><a href="#3-出现了问题" class="headerlink" title="3.出现了问题"></a>3.出现了问题</h4><p><strong>在使用 Heroku 的过程中如果出现了问题，则可以使用下面命令来输出生产环境上的日志进行排错</strong></p>
+</code></pre><h5 id="3-出现了问题"><a href="#3-出现了问题" class="headerlink" title="3.出现了问题"></a>3.出现了问题</h5><p><strong>在使用 Heroku 的过程中如果出现了问题，则可以使用下面命令来输出生产环境上的日志进行排错</strong></p>
 <pre><code>heroku logs
 </code></pre><p><strong><em>注：这些只是我总结的部分命令，在之后的学习当中如果遇到有关 Heroku 的命令行操作会进行及时的补充</em></strong></p>
 
@@ -202,7 +202,7 @@ heroku buildpacks:set hero/php
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Heroku-命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">Heroku 命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x01-Heorku-介绍"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">0x01 Heorku 介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x02-Heroku-命令介绍"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">0x02 Heroku 命令介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-登录命令"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">1.登录命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-上线命令"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">2.上线命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-出现了问题"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">3.出现了问题</span></a></li></ol></li></ol></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Heroku-命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">Heroku 命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x01-Heorku-介绍"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">0x01 Heorku 介绍</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x02-Heroku-命令介绍"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">0x02 Heroku 命令介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-登录命令"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">1.登录命令</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-上线命令"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">2.上线命令</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#3-出现了问题"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">3.出现了问题</span></a></li></ol></li></ol></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">

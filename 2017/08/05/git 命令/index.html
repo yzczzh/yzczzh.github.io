@@ -152,26 +152,26 @@
     
   </div>
   <div class="post-page-content">
-  <h2 id="git-命令"><a href="#git-命令" class="headerlink" title="git 命令"></a>git 命令</h2><h3 id="0x01-Git-的介绍"><a href="#0x01-Git-的介绍" class="headerlink" title="0x01 Git 的介绍"></a>0x01 Git 的介绍</h3><p><strong>Git 是 Linux 的创始人 Linus Torvalds 开源的一款分布式版本控制系统，以帮助开发者更好的对项目进行版本管理。每一个优秀的开发者在进行项目开发时都会第一时间给自己的项目加上 Git，以便能更好的追踪代码修改，进行版本回溯等操作。在多人协作的开发过程中，Git 更是必不可少的。因此，本书中将使用 Git 来管理项目的所有代码，让你在阅读本书的时候能够体会到 Git 的强大，了解实际开发中我们对 Git 的应用。</strong></p>
+  <h3 id="Git-命令"><a href="#Git-命令" class="headerlink" title="Git 命令"></a>Git 命令</h3><h4 id="0x01-Git-的介绍"><a href="#0x01-Git-的介绍" class="headerlink" title="0x01 Git 的介绍"></a>0x01 Git 的介绍</h4><p><strong>Git 是 Linux 的创始人 Linus Torvalds 开源的一款分布式版本控制系统，以帮助开发者更好的对项目进行版本管理。每一个优秀的开发者在进行项目开发时都会第一时间给自己的项目加上 Git，以便能更好的追踪代码修改，进行版本回溯等操作。在多人协作的开发过程中，Git 更是必不可少的。因此，本书中将使用 Git 来管理项目的所有代码，让你在阅读本书的时候能够体会到 Git 的强大，了解实际开发中我们对 Git 的应用。</strong></p>
 <p><strong>在现代化的项目开发中，Git 基本上是标配。</strong></p>
-<h3 id="0x02-Git-命令的介绍"><a href="#0x02-Git-命令的介绍" class="headerlink" title="0x02 Git 命令的介绍"></a>0x02 Git 命令的介绍</h3><h4 id="1-Git-的基本设置"><a href="#1-Git-的基本设置" class="headerlink" title="1.Git 的基本设置"></a>1.Git 的基本设置</h4><pre><code>git config --global user.name &quot;Your name&quot;
+<h4 id="0x02-Git-命令的介绍"><a href="#0x02-Git-命令的介绍" class="headerlink" title="0x02 Git 命令的介绍"></a>0x02 Git 命令的介绍</h4><h5 id="1-Git-的基本设置"><a href="#1-Git-的基本设置" class="headerlink" title="1.Git 的基本设置"></a>1.Git 的基本设置</h5><pre><code>git config --global user.name &quot;Your name&quot;
 git config --global user.email you@example.com
 </code></pre><p><strong>–global 是对 Git 进行全局设置</strong></p>
 <p><strong>该命令是对 Git 进行用户名和邮箱的设置，该设置可以在你提交代码时自动署名标记，方便查看提交日志是区分作者。</strong></p>
-<h4 id="2-Git-推送分支设置"><a href="#2-Git-推送分支设置" class="headerlink" title="2.Git 推送分支设置"></a>2.Git 推送分支设置</h4><pre><code>git config --global push.default simple
+<h5 id="2-Git-推送分支设置"><a href="#2-Git-推送分支设置" class="headerlink" title="2.Git 推送分支设置"></a>2.Git 推送分支设置</h5><pre><code>git config --global push.default simple
 </code></pre><p><strong>此命令的作用是：当我们执行 <code>git push</code> 命令，但是没有指定分支时，会自动使用当前分支，而不是报错</strong></p>
-<h4 id="3-Git-初始化"><a href="#3-Git-初始化" class="headerlink" title="3.Git 初始化"></a>3.Git 初始化</h4><pre><code>git init
-</code></pre><h4 id="4-添加版本管理"><a href="#4-添加版本管理" class="headerlink" title="4.添加版本管理"></a>4.添加版本管理</h4><pre><code>git add -A
-</code></pre><p>可以通过在 <code>.gitignore</code> 文件中进行设置，来忽略掉一些我们不想纳入到 Git 版本管理中的文件(如缓存文件) 因此上面描述的『所有文件』指的是没在 <code>.gitignore</code> 中被忽略的文件。</p>
-<h4 id="5-检查-Git-状态"><a href="#5-检查-Git-状态" class="headerlink" title="5.检查 Git 状态"></a>5.检查 Git 状态</h4><pre><code>git status
+<h5 id="3-Git-初始化"><a href="#3-Git-初始化" class="headerlink" title="3.Git 初始化"></a>3.Git 初始化</h5><pre><code>git init
+</code></pre><h5 id="4-添加版本管理"><a href="#4-添加版本管理" class="headerlink" title="4.添加版本管理"></a>4.添加版本管理</h5><pre><code>git add -A
+</code></pre><p><strong>可以通过在 <code>.gitignore</code> 文件中进行设置，来忽略掉一些我们不想纳入到 Git 版本管理中的文件(如缓存文件) 因此上面描述的『所有文件』指的是没在 <code>.gitignore</code> 中被忽略的文件。</strong></p>
+<h5 id="5-检查-Git-状态"><a href="#5-检查-Git-状态" class="headerlink" title="5.检查 Git 状态"></a>5.检查 Git 状态</h5><pre><code>git status
 </code></pre><p><strong>该命令会向你输出存放在 Git 暂存区中的文件，这意味着这些文件并没有真正提交到 Git 中。</strong></p>
-<h4 id="6-保留改动并提交"><a href="#6-保留改动并提交" class="headerlink" title="6.保留改动并提交"></a>6.保留改动并提交</h4><pre><code>git commit -m &quot;Initial commit&quot;
+<h5 id="6-保留改动并提交"><a href="#6-保留改动并提交" class="headerlink" title="6.保留改动并提交"></a>6.保留改动并提交</h5><pre><code>git commit -m &quot;Initial commit&quot;
 </code></pre><p><strong>该命令会将暂存区的文件都提交到 Git，<code>-m</code> 选项后面带的参数表示本次提交的简单描述。</strong></p>
-<h4 id="7-查看历史提交记录"><a href="#7-查看历史提交记录" class="headerlink" title="7.查看历史提交记录"></a>7.查看历史提交记录</h4><pre><code>git log
+<h5 id="7-查看历史提交记录"><a href="#7-查看历史提交记录" class="headerlink" title="7.查看历史提交记录"></a>7.查看历史提交记录</h5><pre><code>git log
 </code></pre><p><strong>从输出信息中可以很清晰的看到每次提交的作者、日期、描述等信息。注意看这里的 <code>Author</code> 项的内容就是我们上面设置的用户信息。 按 <code>q</code> 可退出查看。</strong></p>
-<h4 id="8-恢复被删除文件"><a href="#8-恢复被删除文件" class="headerlink" title="8.恢复被删除文件"></a>8.恢复被删除文件</h4><pre><code>git checkout -f
+<h5 id="8-恢复被删除文件"><a href="#8-恢复被删除文件" class="headerlink" title="8.恢复被删除文件"></a>8.恢复被删除文件</h5><pre><code>git checkout -f
 </code></pre><p>该命令的作用是将在暂存区里更改的文件进行强制撤销</p>
-<h4 id="9-新建分支"><a href="#9-新建分支" class="headerlink" title="9.新建分支"></a>9.新建分支</h4><p><strong>(1)新建 static-pages 分支</strong></p>
+<h5 id="9-新建分支"><a href="#9-新建分支" class="headerlink" title="9.新建分支"></a>9.新建分支</h5><p><strong>(1)新建 static-pages 分支</strong></p>
 <pre><code>git checkout master
 git checkout -b static-pages
 </code></pre><p><strong>上面的第一条命令 git checkout master 代表将当前分支切换到 master 分支上，master 分支是我们初始化 Git 时默认创建的主分支，其它分支都是基于主分支衍生出来的。</strong></p>
@@ -181,7 +181,7 @@ git checkout -b static-pages
 <pre><code>git merge fake-branch
 </code></pre><p><strong>(3)删除分支</strong></p>
 <pre><code>git branch -d fake-branch
-</code></pre><h4 id="10-代码推送"><a href="#10-代码推送" class="headerlink" title="10.代码推送"></a>10.代码推送</h4><p><strong>(1)推送到 GitHub 上</strong></p>
+</code></pre><h5 id="10-代码推送"><a href="#10-代码推送" class="headerlink" title="10.代码推送"></a>10.代码推送</h5><p><strong>(1)推送到 GitHub 上</strong></p>
 <pre><code>git remote add origin git@github.com:your_username/hello_laravel.git
 git push origin master
 </code></pre><p><strong>第一条命令的意思是：在我们的 GitHub 本地仓库添加一个远程仓库，<code>git@github.com:your_username/hello_laravel.git</code> 是本地仓库的地址，使用ssh的方式连接。</strong></p>
@@ -214,7 +214,7 @@ git push
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git-命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">git 命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x01-Git-的介绍"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">0x01 Git 的介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x02-Git-命令的介绍"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">0x02 Git 命令的介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-Git-的基本设置"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">1.Git 的基本设置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-Git-推送分支设置"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">2.Git 推送分支设置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-Git-初始化"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">3.Git 初始化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-添加版本管理"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">4.添加版本管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-检查-Git-状态"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">5.检查 Git 状态</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-保留改动并提交"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">6.保留改动并提交</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-查看历史提交记录"><span class="post-toc-number">1.2.7.</span> <span class="post-toc-text">7.查看历史提交记录</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-恢复被删除文件"><span class="post-toc-number">1.2.8.</span> <span class="post-toc-text">8.恢复被删除文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-新建分支"><span class="post-toc-number">1.2.9.</span> <span class="post-toc-text">9.新建分支</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#10-代码推送"><span class="post-toc-number">1.2.10.</span> <span class="post-toc-text">10.代码推送</span></a></li></ol></li></ol></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Git-命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">Git 命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x01-Git-的介绍"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">0x01 Git 的介绍</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x02-Git-命令的介绍"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">0x02 Git 命令的介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-Git-的基本设置"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">1.Git 的基本设置</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-Git-推送分支设置"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">2.Git 推送分支设置</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#3-Git-初始化"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">3.Git 初始化</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#4-添加版本管理"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">4.添加版本管理</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#5-检查-Git-状态"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">5.检查 Git 状态</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#6-保留改动并提交"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">6.保留改动并提交</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#7-查看历史提交记录"><span class="post-toc-number">1.2.7.</span> <span class="post-toc-text">7.查看历史提交记录</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#8-恢复被删除文件"><span class="post-toc-number">1.2.8.</span> <span class="post-toc-text">8.恢复被删除文件</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#9-新建分支"><span class="post-toc-number">1.2.9.</span> <span class="post-toc-text">9.新建分支</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#10-代码推送"><span class="post-toc-number">1.2.10.</span> <span class="post-toc-text">10.代码推送</span></a></li></ol></li></ol></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
