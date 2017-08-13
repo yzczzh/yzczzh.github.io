@@ -147,7 +147,6 @@ delete from mysql.func where name=&apos;cmdshell&apos;;
 
 (2)不需要手动输入命令，执行了 exp 文件后，直接提权并添加用户等操作，如：ms11080/ms11046
 </code></pre><h5 id="4-连接-3389-端口登录远程桌面"><a href="#4-连接-3389-端口登录远程桌面" class="headerlink" title="4.连接 3389 端口登录远程桌面"></a>4.连接 3389 端口登录远程桌面</h5><p><strong>如果无法连接 3389 端口，提权文章中有讲</strong></p>
-<p><a href="https://yzczzh.github.io/2017/08/13/提权学习(一" target="_blank" rel="external">提权学习(一) 提权基础及相关的问题的解决</a>%20提权基础及相关的问题的解决/)</p>
 <h4 id="0x04-添加用户等基本命令"><a href="#0x04-添加用户等基本命令" class="headerlink" title="0x04 添加用户等基本命令"></a>0x04 添加用户等基本命令</h4><h5 id="1-添加用户命令：net-user-用户名-密码-add"><a href="#1-添加用户命令：net-user-用户名-密码-add" class="headerlink" title="1.添加用户命令：net user 用户名 密码 /add"></a>1.添加用户命令：net user 用户名 密码 /add</h5><pre><code>net user yzc yzc /add
 </code></pre><h5 id="2-将用户添加到管理员组命令：net-localgroup-administrators-用户-add"><a href="#2-将用户添加到管理员组命令：net-localgroup-administrators-用户-add" class="headerlink" title="2.将用户添加到管理员组命令：net localgroup administrators 用户 /add"></a>2.将用户添加到管理员组命令：net localgroup administrators 用户 /add</h5><pre><code>net localgroup administrators yzc /add
 </code></pre><p>参考文章</p>
