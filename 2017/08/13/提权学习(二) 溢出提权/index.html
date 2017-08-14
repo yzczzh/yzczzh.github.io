@@ -142,24 +142,34 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(http://oujzxyfkr.bkt.clouddn.com/yzczzh02bj.jpg)" >
-  <h2>yzczzh</h2>
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(http://oujzxyfkr.bkt.clouddn.com/yzczzh07%E6%BA%A2%E5%87%BA%E6%8F%90%E6%9D%83bj.jpg)" >
+  <h2>提权学习(二) 溢出提权</h2>
     
-  <p>作者:yzc &nbsp&nbsp 发布于:<time datetime="2017-07-28T09:20:40.000Z">
-          2017-07-28
+  <p>作者:yzc &nbsp&nbsp 发布于:<time datetime="2017-08-13T10:00:00.000Z">
+          2017-08-13
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  <p><strong>终于建好了属于自己的博客，感觉很不错，一直想建一个自己的博客记录自己的学习经历和心得体会，由于种种原因一直拖延到现在，终于建立起来了~</strong></p>
-<p><strong>博客是使用HEXO + GitHub搭建起来的，搭建起来很方便，选模板和修改模板花了好长时间，但是做出来的效果还是不错的，感觉辛苦没有白费，HEXO + GitHub的命令行操作也非常的方便，创建文档，部署就可以通过很简单的几个命令就可以实现；主题的选择和改进网上也有详细的教程(但是有些主题需要用到的插件中的某些方法node.js已经放弃使用了，这些地方需要注意)</strong></p>
-<p><strong>虽然花了很长时间但是也学会了很多，博客搭建起来之后，我也会陆陆续续的更新自己的博客，让博客记录我的学习历程和经验~</strong></p>
-<p><strong>下面会附上我在搭建博客时借鉴的文章及查阅的资料，还要感谢<a href="http://www.z1blog.com" target="_blank" rel="external">zil0ng师傅</a>的帮助，他的博客也在我的友链中，大家可以去浏览，谢谢大家，希望大家多多关注，我也会及时努力的更新，让所有人也让自己看到我的进步~</strong></p>
-<p><strong><em>1.建站链接</em></strong><br><a href="http://blog.csdn.net/qq_30379689/article/details/52854003" target="_blank" rel="external">Mac下使用Hexo搭建个人博客</a></p>
-<p><strong><em>2.主题链接</em></strong></p>
-<p><a href="http://blog.csdn.net/chwshuang/article/details/52350463" target="_blank" rel="external">Hexo安装主题</a></p>
-<p><a href="https://hexo.io/themes/" target="_blank" rel="external">Themes</a></p>
+  <h3 id="溢出提权"><a href="#溢出提权" class="headerlink" title="溢出提权"></a>溢出提权</h3><h4 id="0x01-原理"><a href="#0x01-原理" class="headerlink" title="0x01 原理"></a>0x01 原理</h4><p><strong>溢出漏洞就像杯子里装水，水多了杯子装不进去，就会把里面的水溢出来。而相对计算机来说计算机有个地方叫缓存区，程序的缓存区长度是被事先设定好的，如果用户输入的数据超过了这个缓存区的长度，那么这个程序就会溢出了。缓存区溢出漏洞主要是由于许多软件没有对缓存区检查而造成的。</strong></p>
+<h4 id="0x02-前提"><a href="#0x02-前提" class="headerlink" title="0x02 前提"></a>0x02 前提</h4><p><strong>1.如果使用 asp 的 webshell 进行提权，则该 webshell 需要支持 wscript(wscript.shell/shell.application)</strong></p>
+<p><strong>2.如果使用 aspx 的 webshell 进行提前，则该 webshell 要能够调用 .net 组件来执行 cmd 命令</strong></p>
+<h4 id="0x03-提权流程"><a href="#0x03-提权流程" class="headerlink" title="0x03 提权流程"></a>0x03 提权流程</h4><h5 id="1-寻找可读可写目录："><a href="#1-寻找可读可写目录：" class="headerlink" title="1.寻找可读可写目录："></a>1.寻找可读可写目录：</h5><p><strong>该目录的作用是：上传提权的 exp ， cmd.exe 文件 或者 net.exe 文件</strong></p>
+<p><strong>注意：寻找到的可读可写目录尽量不要有空格，如果用空格则可能会导致命令无法被执行(尤其是在上传 exp 文件时)</strong></p>
+<h5 id="2-主机信息搜集："><a href="#2-主机信息搜集：" class="headerlink" title="2.主机信息搜集："></a>2.主机信息搜集：</h5><p><strong>(1)通过在终端运行 whoami 命令来查看当前用户的权限</strong></p>
+<pre><code>whoami
+</code></pre><p><strong>(2)通过在终端运行 <code>systeminfo</code> 命令查看主机打补丁的情况</strong></p>
+<pre><code>systeminfo
+</code></pre><h5 id="3-使用-exp-进行提权"><a href="#3-使用-exp-进行提权" class="headerlink" title="3.使用 exp 进行提权"></a>3.使用 exp 进行提权</h5><p><strong>根据主机打的补丁情况选择合适的 exp 进行提权。将选择好的 exp 上传到一个可读可写的目录下，并把此 exp 路径复制到 webshell 的 cmd 命令栏下。有两类 exp 。</strong></p>
+<pre><code>(1)需要在提权过后自己添加新用户并将新用户添加到 administrator 组的 exp ，如：pr/巴西烤肉
+
+(2)不需要手动输入命令，执行了 exp 文件后，直接提权并添加用户等操作，如：ms11080/ms11046
+</code></pre><h5 id="4-连接-3389-端口登录远程桌面"><a href="#4-连接-3389-端口登录远程桌面" class="headerlink" title="4.连接 3389 端口登录远程桌面"></a>4.连接 3389 端口登录远程桌面</h5><p><strong>如果无法连接 3389 端口，提权文章中有讲</strong></p>
+<h4 id="0x04-添加用户等基本命令"><a href="#0x04-添加用户等基本命令" class="headerlink" title="0x04 添加用户等基本命令"></a>0x04 添加用户等基本命令</h4><h5 id="1-添加用户命令：net-user-用户名-密码-add"><a href="#1-添加用户命令：net-user-用户名-密码-add" class="headerlink" title="1.添加用户命令：net user 用户名 密码 /add"></a>1.添加用户命令：net user 用户名 密码 /add</h5><pre><code>net user yzc yzc /add
+</code></pre><h5 id="2-将用户添加到管理员组命令：net-localgroup-administrators-用户-add"><a href="#2-将用户添加到管理员组命令：net-localgroup-administrators-用户-add" class="headerlink" title="2.将用户添加到管理员组命令：net localgroup administrators 用户 /add"></a>2.将用户添加到管理员组命令：net localgroup administrators 用户 /add</h5><pre><code>net localgroup administrators yzc /add
+</code></pre><p>参考文章</p>
+<p><a href="http://www.cnseay.com/330/" target="_blank" rel="external">常见的服务器溢出提权方法总结</a></p>
 
   </div>
   <!--评论块-->
@@ -169,7 +179,7 @@
 <nav class="post-nav">
   <!-- Prev Nav -->
     
-  <a href="/2017/07/29/zsh/" id="post_nav-newer" class="post-nav-content prev-content">
+  <a href="/2017/08/13/提权学习(三) UDF提权/" id="post_nav-newer" class="post-nav-content prev-content">
       新篇
   </a>
     
@@ -177,11 +187,15 @@
 
   <!-- Next Nav -->
     
+  <a href="/2017/08/05/git 命令/" id="post_nav-older" class="post-nav-content next-content">
+      旧篇
+  </a>
+    
 </nav>
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#溢出提权"><span class="post-toc-number">1.</span> <span class="post-toc-text">溢出提权</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x01-原理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">0x01 原理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x02-前提"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">0x02 前提</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x03-提权流程"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">0x03 提权流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-寻找可读可写目录："><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">1.寻找可读可写目录：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-主机信息搜集："><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">2.主机信息搜集：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#3-使用-exp-进行提权"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">3.使用 exp 进行提权</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#4-连接-3389-端口登录远程桌面"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">4.连接 3389 端口登录远程桌面</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x04-添加用户等基本命令"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">0x04 添加用户等基本命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-添加用户命令：net-user-用户名-密码-add"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">1.添加用户命令：net user 用户名 密码 /add</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-将用户添加到管理员组命令：net-localgroup-administrators-用户-add"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">2.将用户添加到管理员组命令：net localgroup administrators 用户 /add</span></a></li></ol></li></ol></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">

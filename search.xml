@@ -131,6 +131,44 @@ delete from mysql.func where name=&apos;cmdshell&apos;;
     </entry>
     
     <entry>
+      <title><![CDATA[提权学习(二) 溢出提权]]></title>
+      <url>/2017/08/13/%E6%8F%90%E6%9D%83%E5%AD%A6%E4%B9%A0(%E4%BA%8C)%20%E6%BA%A2%E5%87%BA%E6%8F%90%E6%9D%83/</url>
+      <content type="html"><![CDATA[<h3 id="溢出提权"><a href="#溢出提权" class="headerlink" title="溢出提权"></a>溢出提权</h3><h4 id="0x01-原理"><a href="#0x01-原理" class="headerlink" title="0x01 原理"></a>0x01 原理</h4><p><strong>溢出漏洞就像杯子里装水，水多了杯子装不进去，就会把里面的水溢出来。而相对计算机来说计算机有个地方叫缓存区，程序的缓存区长度是被事先设定好的，如果用户输入的数据超过了这个缓存区的长度，那么这个程序就会溢出了。缓存区溢出漏洞主要是由于许多软件没有对缓存区检查而造成的。</strong></p>
+<h4 id="0x02-前提"><a href="#0x02-前提" class="headerlink" title="0x02 前提"></a>0x02 前提</h4><p><strong>1.如果使用 asp 的 webshell 进行提权，则该 webshell 需要支持 wscript(wscript.shell/shell.application)</strong></p>
+<p><strong>2.如果使用 aspx 的 webshell 进行提前，则该 webshell 要能够调用 .net 组件来执行 cmd 命令</strong></p>
+<h4 id="0x03-提权流程"><a href="#0x03-提权流程" class="headerlink" title="0x03 提权流程"></a>0x03 提权流程</h4><h5 id="1-寻找可读可写目录："><a href="#1-寻找可读可写目录：" class="headerlink" title="1.寻找可读可写目录："></a>1.寻找可读可写目录：</h5><p><strong>该目录的作用是：上传提权的 exp ， cmd.exe 文件 或者 net.exe 文件</strong></p>
+<p><strong>注意：寻找到的可读可写目录尽量不要有空格，如果用空格则可能会导致命令无法被执行(尤其是在上传 exp 文件时)</strong></p>
+<h5 id="2-主机信息搜集："><a href="#2-主机信息搜集：" class="headerlink" title="2.主机信息搜集："></a>2.主机信息搜集：</h5><p><strong>(1)通过在终端运行 whoami 命令来查看当前用户的权限</strong></p>
+<pre><code>whoami
+</code></pre><p><strong>(2)通过在终端运行 <code>systeminfo</code> 命令查看主机打补丁的情况</strong></p>
+<pre><code>systeminfo
+</code></pre><h5 id="3-使用-exp-进行提权"><a href="#3-使用-exp-进行提权" class="headerlink" title="3.使用 exp 进行提权"></a>3.使用 exp 进行提权</h5><p><strong>根据主机打的补丁情况选择合适的 exp 进行提权。将选择好的 exp 上传到一个可读可写的目录下，并把此 exp 路径复制到 webshell 的 cmd 命令栏下。有两类 exp 。</strong></p>
+<pre><code>(1)需要在提权过后自己添加新用户并将新用户添加到 administrator 组的 exp ，如：pr/巴西烤肉
+
+(2)不需要手动输入命令，执行了 exp 文件后，直接提权并添加用户等操作，如：ms11080/ms11046
+</code></pre><h5 id="4-连接-3389-端口登录远程桌面"><a href="#4-连接-3389-端口登录远程桌面" class="headerlink" title="4.连接 3389 端口登录远程桌面"></a>4.连接 3389 端口登录远程桌面</h5><p><strong>如果无法连接 3389 端口，提权文章中有讲</strong></p>
+<h4 id="0x04-添加用户等基本命令"><a href="#0x04-添加用户等基本命令" class="headerlink" title="0x04 添加用户等基本命令"></a>0x04 添加用户等基本命令</h4><h5 id="1-添加用户命令：net-user-用户名-密码-add"><a href="#1-添加用户命令：net-user-用户名-密码-add" class="headerlink" title="1.添加用户命令：net user 用户名 密码 /add"></a>1.添加用户命令：net user 用户名 密码 /add</h5><pre><code>net user yzc yzc /add
+</code></pre><h5 id="2-将用户添加到管理员组命令：net-localgroup-administrators-用户-add"><a href="#2-将用户添加到管理员组命令：net-localgroup-administrators-用户-add" class="headerlink" title="2.将用户添加到管理员组命令：net localgroup administrators 用户 /add"></a>2.将用户添加到管理员组命令：net localgroup administrators 用户 /add</h5><pre><code>net localgroup administrators yzc /add
+</code></pre><p>参考文章</p>
+<p><a href="http://www.cnseay.com/330/" target="_blank" rel="external">常见的服务器溢出提权方法总结</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 提权 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 溢出提权 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Git 命令行操作的介绍]]></title>
       <url>/2017/08/05/git%20%E5%91%BD%E4%BB%A4/</url>
       <content type="html"><![CDATA[<h3 id="Git-命令"><a href="#Git-命令" class="headerlink" title="Git 命令"></a>Git 命令</h3><h4 id="0x01-Git-的介绍"><a href="#0x01-Git-的介绍" class="headerlink" title="0x01 Git 的介绍"></a>0x01 Git 的介绍</h4><p><strong>Git 是 Linux 的创始人 Linus Torvalds 开源的一款分布式版本控制系统，以帮助开发者更好的对项目进行版本管理。每一个优秀的开发者在进行项目开发时都会第一时间给自己的项目加上 Git，以便能更好的追踪代码修改，进行版本回溯等操作。在多人协作的开发过程中，Git 更是必不可少的。因此，本书中将使用 Git 来管理项目的所有代码，让你在阅读本书的时候能够体会到 Git 的强大，了解实际开发中我们对 Git 的应用。</strong></p>
