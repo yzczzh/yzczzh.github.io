@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[提权学习(四) MOF提权]]></title>
-      <url>/2017/08/13/%E6%8F%90%E6%9D%83%E5%AD%A6%E4%B9%A0(%E5%9B%9B)%20MOF%E6%8F%90%E6%9D%83/</url>
+      <url>/2017/08/13/%E6%8F%90%E6%9D%83%E5%AD%A6%E4%B9%A0(%E4%B8%80)%20MOF%E6%8F%90%E6%9D%83/</url>
       <content type="html"><![CDATA[<h3 id="mof-提权"><a href="#mof-提权" class="headerlink" title="mof 提权"></a>mof 提权</h3><h4 id="0x01-原理"><a href="#0x01-原理" class="headerlink" title="0x01 原理"></a>0x01 原理</h4><p><strong><code>mof</code>文件是 <code>Windows 管理规范</code> 存储库中的托管对象格式文件。Windows 管理规范缩写为：WMI</strong></p>
 <p><strong><code>Windows 管理规范</code> 提供了三种方式去编译 <code>mof</code> 文件</strong></p>
 <pre><code>方法一：运行 Mofcomp.exe 文件，将要编译的 mof 文件作为命令行参数去执行
@@ -170,7 +170,7 @@ delete from mysql.func where name=&apos;cmdshell&apos;;
     
     <entry>
       <title><![CDATA[提权学习(一) 提权基础及相关的问题的解决]]></title>
-      <url>/2017/08/13/%E6%8F%90%E6%9D%83%E5%AD%A6%E4%B9%A0(%E4%B8%80)%20%E6%8F%90%E6%9D%83%E5%9F%BA%E7%A1%80%E5%8F%8A%E7%9B%B8%E5%85%B3%E7%9A%84%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3/</url>
+      <url>/2017/08/13/%E6%8F%90%E6%9D%83%E5%AD%A6%E4%B9%A0(%E5%9B%9B)%20%E6%8F%90%E6%9D%83%E5%9F%BA%E7%A1%80%E5%8F%8A%E7%9B%B8%E5%85%B3%E7%9A%84%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3/</url>
       <content type="html"><![CDATA[<h3 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h3><h4 id="0x01-Windows-常规命令-提权常用"><a href="#0x01-Windows-常规命令-提权常用" class="headerlink" title="0x01 Windows 常规命令(提权常用)"></a>0x01 Windows 常规命令(提权常用)</h4><h5 id="1-查看-IP-地址配置信息"><a href="#1-查看-IP-地址配置信息" class="headerlink" title="1 查看 IP 地址配置信息"></a>1 查看 IP 地址配置信息</h5><pre><code>ipconfig
 </code></pre><h5 id="2-用户操作命令-net-user"><a href="#2-用户操作命令-net-user" class="headerlink" title="2 用户操作命令(net user)"></a>2 用户操作命令(net user)</h5><p><strong>(1) 添加用户并设置密码</strong></p>
 <pre><code>net user 用户名 用户密码 /add
