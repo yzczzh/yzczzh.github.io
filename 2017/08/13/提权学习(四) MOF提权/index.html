@@ -152,7 +152,7 @@
     
   </div>
   <div class="post-page-content">
-  <h3 id="mof-提权"><a href="#mof-提权" class="headerlink" title="mof 提权"></a>mof 提权</h3><h4 id="0x01-原理"><a href="#0x01-原理" class="headerlink" title="0x01 原理"></a>0x01 原理</h4><p><strong><code>mof</code> 文件是 <code>Windows 管理规范</code> 存储库中的托管对象格式文件。Windows 管理规范缩写为：WMI</strong></p>
+  <h3 id="mof-提权"><a href="#mof-提权" class="headerlink" title="mof 提权"></a>mof 提权</h3><h4 id="0x01-原理"><a href="#0x01-原理" class="headerlink" title="0x01 原理"></a>0x01 原理</h4><p><strong><code>mof</code>文件是 <code>Windows 管理规范</code> 存储库中的托管对象格式文件。Windows 管理规范缩写为：WMI</strong></p>
 <p><strong><code>Windows 管理规范</code> 提供了三种方式去编译 <code>mof</code> 文件</strong></p>
 <pre><code>方法一：运行 Mofcomp.exe 文件，将要编译的 mof 文件作为命令行参数去执行
 
@@ -191,7 +191,7 @@
 </li>
 <li><p><strong>3 重新启动服务</strong></p>
 <pre><code>net start winmgmt
-</code></pre><p><strong><code>C:/Windows/system32/webm/mof</code> 文件夹下放的是 <code>Windows 管理规范</code> 的存储库，执行的 <code>.mof</code> 文件都会被加入到这个库中，然后一直会按照我们放入的 <code>nullevt.mof</code> 文件去执行，所以即使删掉了 <code>C:/Windows/system32/webm/mof</code> 目录下的 <code>.mof</code> 文件，系统照样会继续执行，只有停止服务后，把 <code>WMI</code> 的存储库删掉，再重启服务，系统就会重建一个默认的存储库，只有这样才能彻底解决掉这个问题(需要事先把<code>C:/Windows/system32/webm/mof</code> 目录下的 <code>.mof</code> 文件删掉)</strong></p>
+</code></pre><p><strong><code>C:/Windows/system32/webm/mof</code> 文件夹下放的是 <code>Windows 管理规范</code> 的存储库，执行的 <code>.mof</code> 文件都会被加入到这个库中，然后一直会按照我们放入的 <code>nullevt.mof</code> 文件去执行，所以即使删掉了 <code>C:/Windows/system32/webm/mof</code> 目录下的 <code>.mof</code> 文件，系统照样会继续执行，只有停止服务后，把 <code>WMI</code> 的存储库删掉，再重启服务，系统就会重建一个默认的存储库，只有这样才能彻底解决掉这个问题(需要事先把 <code>C:/Windows/system32/webm/mof</code> 目录下的 <code>.mof</code> 文件删掉)</strong></p>
 </li>
 </ul>
 <p>参考文章</p>
