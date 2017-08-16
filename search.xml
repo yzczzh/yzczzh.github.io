@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[心得体会---宽字节注入]]></title>
-      <url>/2017/08/15/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5%E6%80%BB%E7%BB%93/</url>
+      <url>/2017/08/17/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<h4 id="宽字节注入心得体会"><a href="#宽字节注入心得体会" class="headerlink" title="宽字节注入心得体会"></a>宽字节注入心得体会</h4><p>转载了p神的一篇写宽字节注入的，本来想自己总结，可是看了p神的文章后觉得写得太棒了，就转载了！</p>
 <p>读完p神的文章后，也对宽字节注入有了一个大体的了解：</p>
 <h5 id="0x01-在什么情况下我们可能会使用宽字节注入来绕过"><a href="#0x01-在什么情况下我们可能会使用宽字节注入来绕过" class="headerlink" title="0x01 在什么情况下我们可能会使用宽字节注入来绕过"></a>0x01 在什么情况下我们可能会使用宽字节注入来绕过</h5><pre><code>(1)存在 GBK 编码(这里说的比较含糊是因为宽字节注入可能是因为mysql的特性问题，也有可能是PHP本身的问题，在下面的原理中会详细说明)
@@ -709,14 +709,14 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
     </entry>
     
     <entry>
-      <title><![CDATA[friends]]></title>
-      <url>/friends/index.html</url>
+      <title><![CDATA[photo]]></title>
+      <url>/photo/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[photo]]></title>
-      <url>/photo/index.html</url>
+      <title><![CDATA[friends]]></title>
+      <url>/friends/index.html</url>
       <content type="html"></content>
     </entry>
     
