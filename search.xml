@@ -3,6 +3,64 @@
   
     
     <entry>
+      <title><![CDATA[心得体会---宽字节注入]]></title>
+      <url>/2017/08/15/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<h4 id="宽字节注入心得体会"><a href="#宽字节注入心得体会" class="headerlink" title="宽字节注入心得体会"></a>宽字节注入心得体会</h4><p>转载了p神的一篇写宽字节注入的，本来想自己总结，可是看了p神的文章后觉得写得太棒了，就转载了！</p>
+<p>读完p神的文章后，也对宽字节注入有了一个大体的了解：</p>
+<h5 id="0x01-在什么情况下我们可能会使用宽字节注入来绕过"><a href="#0x01-在什么情况下我们可能会使用宽字节注入来绕过" class="headerlink" title="0x01 在什么情况下我们可能会使用宽字节注入来绕过"></a>0x01 在什么情况下我们可能会使用宽字节注入来绕过</h5><pre><code>(1)存在 GBK 编码(这里说的比较含糊是因为宽字节注入可能是因为mysql的特性问题，也有可能是PHP本身的问题，在下面的原理中会详细说明)
+
+(2)PHP 开启 magic_quotes_gpc 函数、使用 addslashes 函数、错误使用mysql_real_escape_string函数，或者使用 iconv 函数。
+</code></pre><h5 id="0x02-产生原因："><a href="#0x02-产生原因：" class="headerlink" title="0x02 产生原因："></a>0x02 产生原因：</h5><p>在知道了什么情况下我们可能利用宽字节注入后，接下来就是宽字节注入的原理了，产生宽字节注入的原因主要有两个：</p>
+<p>(1)利用了 mysql 的特性：</p>
+<pre><code>mysql 在使用 GBK 编码的时候会认为两个字符是一个汉字(前一个字符的 ASCII 码值要大于128，才能进入汉字范围)
+</code></pre><p>那么只要我们在构造的语句中加入 %df 、%aa 等这样的字符(0×81-0xFE都可以选择)，这些字符就会和转义字符 <code>\</code> 形成一个 GBK 编码认为的汉字，即使我们加入的符号和 <code>\</code>(%5c) 构成的不是一个汉字，可是 GBK 编码还是会将其合并在一起进行编码，这样注意字符 <code>\</code> 就被除掉了，<code>&#39;</code> 得以逃逸出来。这样就绕过了像 magic_quotes_gpc函数、addslashes 函数等函数的限制</p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh11%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5%E6%80%BB%E7%BB%931.png" alt=""></p>
+<p>(2)利用了 PHP 的函数 iconv 函数</p>
+<p>iconv 函数引发的宽字节注入问题就和 mysql 没有关系了，有的时候针对于宽字节注入的防护做的非常好(具体防护问题后面细说)，可是就是由于有些程序员为了避免乱码，使用了 iconv 函数(搜索框位置出现频繁)再次导致了宽字节注入的发生：</p>
+<pre><code>1&apos; `iconv(&apos;utf-8&apos;, &apos;gbk&apos;, $变量);` 情况下，即将变量由 utf-8 的编码格式转换成 gbk 编码格式。
+</code></pre><p>我们利用宽字节注入就是想绕过诸如 magic_quotes_gpc函数、addslashes 函数的限制，使这些函数对我们自己加入的 <code>&#39;</code> 失效，以达到注入的效果，iconv函数这样使用过后导致宽字节注入的情况比较特殊，特殊的地方在于只有少数的汉字的 GBK 编码的第二个字节是 %5C ，只有这样的汉字经过这样的转换才可以导致宽字节注入，0×81-0xFE 开头 + 0×5C 的字符都可以</p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh11%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5%E6%80%BB%E7%BB%932.png" alt=""></p>
+<pre><code>2&apos; `iconv(&apos;gbk&apos;, &apos;utf-8k&apos;, $变量);` 情况下，即将变量由 gbk 的编码格式转换成 utf-8 编码格式。
+</code></pre><p>在这种情况下问题还是出现在 PHP 身上，因为 GBK 编码表示一个汉字使用两个字节，而 utf-8 编码表示一个汉字使用三个字节，如果把 GBK 转换成 utf-8 则 PHP 会每两个字节一转换。根据这个原理，如果我构造的语句中 <code>&#39;</code> 前面的字符数是奇数的话，在从 GBK 向 utf-8 转换的过程中 <code>\</code> 势必会被我们前面添加的字符合并，使得 <code>\</code> 被吞掉。</p>
+<p>由 PHP 的 <code>iconv(&#39;gbk&#39;, &#39;utf-8k&#39;, $变量);</code> 导致的宽字节注入，在注入语句的构造方面和由 mysql 特性造成的宽字节注入语句是一致的，可是形成的原因却并不相同：一个是由 mysql 的特性造成的，而另一个则是由 PHP 函数的误用造成的。由 mysql 特性导致的宽字节注入可以在做好防护使宽字节注入不再发生；而由 PHP iconv 函数造成的问题是因为函数的误用导致的，如果误用了就会造成宽字节注入</p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh11%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5%E6%80%BB%E7%BB%933.png" alt=""></p>
+<h5 id="0x03-宽字节注入的流程"><a href="#0x03-宽字节注入的流程" class="headerlink" title="0x03 宽字节注入的流程"></a>0x03 宽字节注入的流程</h5><p>1.先尝试加 <code>&#39;</code> ，尝试无果后猜测 <code>&#39;</code> 可能被转义了，于是尝试在 <code>&#39;</code> 前加上 %df 、%aa 等字符尝试是否存在宽字节注入，如果报错则可能为宽字节注入</p>
+<p>2.若尝试无果，则尝试在 <code>&#39;</code> 前加 <code>錦</code> 这样的汉字，如果报错则可能为宽字节注入</p>
+<h5 id="0x04-对于宽字节注入的修复"><a href="#0x04-对于宽字节注入的修复" class="headerlink" title="0x04 对于宽字节注入的修复"></a>0x04 对于宽字节注入的修复</h5><p>对于宽字节注入的修复主要有两种方式</p>
+<pre><code>(1)使用 mysql_set_charset(&apos;gbk&apos;, $conn); + mysql_real_escape_string($_GET[&apos;id&apos;]);
+</code></pre><p> mysql_set_charset 函数的作用是：设置 PHP 连接 mysql 的字符集</p>
+<p> mysql_real_escape_string 函数的作用和 addslashes 函数的作用是一致的，是用来过滤输入的，而且还考虑到连接的当前字符集</p>
+<p> mysql_set_charset 函数设置了 PHP 连接 mysql 的字符集，使得 mysql_real_escape_string 函数在过滤用户输入时考虑到这是 gbk 编码，以避免宽字节注入的产生</p>
+<p> 但是值得注意的是：如果我们不使用 mysql_set_charset 函数而是只单独使用 mysql_real_escape_string 函数是无法避免宽字节注入的，因为 PHP 连接 mysql 时无法得知连接的字符集，所以就无法进行安全的过滤输入</p>
+<pre><code>(2)使用 SET character_set_connection=gbk, character_set_results=gbk,character_set_client=binary
+</code></pre><p>当我们的mysql接受到客户端的数据后，会认为他的编码是character_set_client，然后会将之将换成character_set_connection的编码，然后进入具体表和字段后，再转换成字段对应的编码。</p>
+<p>然后，当查询结果产生后，会从表和字段的编码，转换成character_set_results编码，返回给客户端。</p>
+<p>所以，我们将character_set_client设置成binary，就不存在宽字节或多字节的问题了，所有数据以二进制的形式传递，就能有效避免宽字符注入。</p>
+<h5 id="0x05-注意事项"><a href="#0x05-注意事项" class="headerlink" title="0x05 注意事项"></a>0x05 注意事项</h5><p>1.GB2312 与 GBK 的不同</p>
+<p>数据库的编码设置成 GBK 时，利用 mysql 的特性可以进行宽字节注入，但是如果数据库的编码设置成 GB2312 编码的话宽字节注入就不成功了。</p>
+<p>原因在于：GB2312 编码的取值范围。高位取值范围是 <code>0xA1~0xF7</code> ；低位范围是 <code>0xA1~0xFE</code> ，而 <code>\</code> 是 <code>0x5c</code> 。<code>0x5c</code> 是根本不在 GB2312 的低位范围内的，<code>\</code> 根本就不属于 GB2312 编码，所以 <code>\</code> 是不会被吃掉的</p>
+<p>2.iconv 函数的使用问题</p>
+<p>iconv 函数的功能是转换字符串编码，避免乱码的产生，但是这个函数也可能直接导致宽字节注入，所以这个函数请谨慎使用。只要我们把前端html/js/css所有编码设置成gbk，mysql/php编码设置成gbk，就不会出现乱码问题。</p>
+<h5 id="0x06"><a href="#0x06" class="headerlink" title="0x06"></a>0x06</h5><p>以上就是我最近学习宽字节注入的心得体会，文章中的图片都是我自己用 xmind 做的，自己做图也算是对原理的理解吧，感觉这些天收获挺大的，一直先研究一下注入方面的知识，可是一直没落实到行动上，这次终于真真正正的学习了一把，感觉注入方面比较抽象，只有通过 <code>页面的回显 + 源码的分析</code> 才可能真正理解到原理所在。这些天的学习之后，感觉自己任重而道远，还有很多很多东西要去学习，技术永无止境，只有先把基础打牢之后才有可能深入的去学习更加深层次的东西。</p>
+<p>虽然进行了总结，可是对于宽字节注入我还是有不理解的地方，我会继续在这方面学习，争取把自己不懂的地方都弄明白～～</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 注入 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 宽字节注入(总结) </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[宽字节注入[转载]]]></title>
       <url>/2017/08/15/%5B%E8%BD%AC%E8%BD%BD%5D%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5/</url>
       <content type="html"><![CDATA[<h4 id="转载-宽字节注入"><a href="#转载-宽字节注入" class="headerlink" title="[转载]宽字节注入"></a>[转载]宽字节注入</h4><p>尽管现在呼吁所有的程序都使用 unicode 编码，所有的网站都使用 utf-8 编码，来一个统一的国际规范。但仍然有很多，包括国内及国外（特别是非英语国家）的一些 cms，仍然使用着自己国家的一套编码，比如 gbk，作为自己默认的编码类型。也有一些 cms 为了考虑老用户，所以出了 gbk 和 utf-8 两个版本。</p>
@@ -125,7 +183,7 @@
         
         <tags>
             
-            <tag> 宽字节注入 </tag>
+            <tag> 宽字节注入(转载) </tag>
             
         </tags>
         
