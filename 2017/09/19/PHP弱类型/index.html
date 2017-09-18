@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+  <meta name="keywords" content="yzc&#39; Blog">
+  <meta name="description" content="欢迎来到我的博客，这里将记录我的学习经历和心得体会，希望能给看过的人带来帮助">
+  
+  <title>yzc&#39;s blog</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/materialize.min.css">
+    
+      <link rel="stylesheet" href="/css/main.min.css">
+    
+  
+  <style type="text/css">
+      html{
+          font-family: sans-serif;
+          font-weight: 300;
+      }
+      @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(/fonts/MaterialIcons-Regular.eot);
+          src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+          url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+          url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+      }
+  </style>
+</head>
+<body>
+<div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
+<div id="menu-outer">
+  <div id="menu-inner">
+      <ul id="slide-out" class="side-nav" >
+    <div class="nav-header"  style="background-image: url(http://oujzxyfkr.bkt.clouddn.com/%E5%8D%9A%E5%AE%A2%E5%A4%B4%E5%83%8F%E8%83%8C%E6%99%AF%E6%A0%8F%E5%9B%BE%E7%89%87.jpg);background-color:#26A69A">
+    <div class="header-box"><img src="http://oujzxyfkr.bkt.clouddn.com/%E5%8D%9A%E5%AE%A2%E5%A4%B4%E5%83%8F.jpg" ondragstart="return false;"></div>
+    <p>yzc</p>
+    <div class="nav-link">
+        
+        <a href="http://example.com" target="_blank"> <div class="link-box twitter"></div></a>
+        
+        
+        <a  href="https://github.com/yzczzh" target="_blank"><div class="link-box github"></div></a>
+        
+        
+        <a href="mailto:yzczzh@163.com"><div class="link-box email"></div></a>
+        
+        
+        <a href="http://example.com" target="_blank"><div class="link-box weibo"></div></a>
+        
+        
+        <a href="http://example.com" target="_blank"> <div class="link-box zhihu"></div></a>
+        
+    </div>
+    <div class="nav-search">
+        <form id="search-form"> <!-- 搜索框相关 -->
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索..." class="search form-control" autocomplete="off" autocorrect="off"/>
+            <div class="nav-search-img"><i class="material-icons">search</i></div>
+        </form>
+        <div id="local-search-result"></div> <!-- 搜索结果区 -->
+        <p class='no-result'>无搜索结果</p>
+    </div>
+</div>
+    <!--Homepage-->
+
+<li class="nav-list">
+    <a href="/" target="_self">
+        <div class="nav-ico"><i class="material-icons">home</i> </div><p>主页</p>
+    </a>
+</li>
+
+<!--archives-->
+
+<li class="nav-list dropdown-btn">
+    <a  class=""  target="_self">
+        <div class="nav-ico"><i class="material-icons">assignment</i></div><p>归档</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        <a class="archive-link" href="/archives/2017/09/">September 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/08/">August 2017<span class="archive-count">9</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">2</span></a>
+    </li>
+</ul>
+<!--categories-->
+
+<li class="nav-list dropdown-btn">
+    <a   class=""  target="_self">
+        <div class="nav-ico"><i class="material-icons">dashboard</i></div><p>分类</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        <a class="category-link" href="/categories/Laravel-学习/">Laravel 学习<span class="category-count">3</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/ctf/">ctf<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/工具/">工具<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/提权/">提权<span class="category-count">4</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/日常/">日常<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/注入/">注入<span class="category-count">2</span></a>
+    </li>
+</ul>
+<!--tags-->
+
+<li class="nav-list">
+    <a href="/archives" target="_self">
+        <div class="nav-ico"><i class="material-icons">bookmark</i> </div><p>标签</p>
+    </a>
+</li>
+
+<!--photo-->
+
+<li class="nav-list">
+    <a href="/photo" class="nopjax" target="_self">
+        <div class="nav-ico"><i class="material-icons">insert_photo</i> </div><p>影集</p>
+    </a>
+</li>
+
+<!--friends-->
+
+<li class="nav-list">
+    <a href="/friends" target="_self">
+        <div class="nav-ico"><i class="material-icons">face</i> </div><p>友链</p>
+    </a>
+</li>
+
+<!--about-->
+
+<li class="nav-list">
+    <a href="/about" target="_self">
+        <div class="nav-ico"><i class="material-icons">copyright</i> </div><p>关于</p>
+    </a>
+</li>
+
+
+</ul>
+
+  </div>
+</div>
+
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(http://oujzxyfkr.bkt.clouddn.com/yzczzh12php%E5%BC%B1%E7%B1%BB%E5%9E%8Bbj.jpg)" >
+  <h2>PHP弱类型</h2>
+    
+  <p>作者:yzc &nbsp&nbsp 发布于:<time datetime="2017-09-19T06:00:00.000Z">
+          2017-09-19
+    </time>
+  </p>
+    
+  </div>
+  <div class="post-page-content">
+  <h1 id="PHP弱类型"><a href="#PHP弱类型" class="headerlink" title="PHP弱类型"></a>PHP弱类型</h1><h3 id="0x01-PHP弱类型的介绍"><a href="#0x01-PHP弱类型的介绍" class="headerlink" title="0x01 PHP弱类型的介绍"></a>0x01 PHP弱类型的介绍</h3><p>弱类型的语言对变量的数据类型没有限制，你可以在任何地时候将变量赋值给任意的其他类型的变量，同时变量也可以转换成任意地其他类型的数据。</p>
+<p>类型转换是无法避免的，当不同类型的变量进行比较，或者接受参数，又或者两个变量类型不匹配的情况下，PHP都会自动进行类型转换，但正是由于PHP这种弱类型语言的特性，导致在类型转换的时候会出现各种各样的为题。</p>
+<h3 id="0x02-弱类型中的类型转换"><a href="#0x02-弱类型中的类型转换" class="headerlink" title="0x02 弱类型中的类型转换"></a>0x02 弱类型中的类型转换</h3><p>1.<code>字符串</code>转换为<code>数值</code>时的数值类型问题：</p>
+<p>当一个<code>字符串</code>被认定为<code>数值</code>时，如果<code>字符串</code>没有包含“.”，“e”，“E”时，而且被转换成的<code>数值</code>的值再整数范围内，则<code>字符串</code>转换为<code>数值</code>时的<code>数值</code>类型为<code>int</code>类型，其余的情况下为<code>float</code>类型</p>
+<p>2.字符串类型和数值类型进行运算和比较时(+、-、*、/、==)，字符串类型会被转换成数值类型进行比较(类型转换的问题)，例：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">	$zzh=<span class="number">1</span> + <span class="string">"10.5"</span>; <span class="comment">// $zzh=11.5(float)</span></div><div class="line">	$zzh=<span class="number">1</span>+<span class="string">"-1.3e3"</span>; <span class="comment">//$zzh=-1299(float)</span></div><div class="line">	$zzh=<span class="number">1</span>+<span class="string">"bob-1.3e3"</span>;<span class="comment">//$zzh=1(int)</span></div><div class="line">	$zzh=<span class="number">1</span>+<span class="string">"2admin"</span>;<span class="comment">//$zzh=3(int)</span></div><div class="line">	$zzh=<span class="number">1</span>+<span class="string">"admin2"</span>;<span class="comment">//$zzh=1(int)</span></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p>3.<code>字符串</code>类型转换成<code>数值</code>类型的原则：</p>
+<p>(1)普通字符串的数值由其开始部分决定，如果字符串开始部分是合法的数值，则字符串的数值为其开始部分的值，否则为0。(也可以理解为从字符串的头开始寻找第一个不是数字的字符，该字符前面的数值即该字符串的数值，如果没有找到即开头就是字符，则该字符串的数值为0)，例：</p>
+<pre><code>&quot;1yzc&quot; == 1 //true
+&quot;yzc&quot; == 0  //true
+&quot;0yzc&quot; == 0 //true
+&quot;yzc1&quot; == 1 //false
+&quot;yzc1&quot; == 0 //false
+</code></pre><p>(2)0e\d+类型的字符串(例：0e123456)会被解析为科学计数法，在比较时，这样的字符串都是相等的，因为被认定为科学计数法进行比较，0无论进行了多少次方结果还是0，所以<code>0e\d+``字符串</code>比较时都是相等的，例</p>
+<pre><code>&quot;0e1234&quot; == &quot;0e5678&quot; //true
+&quot;0e1234&quot; == &quot;0eabc&quot;  //false
+&quot;0e1234&quot; == &quot;0&quot; //true
+&quot;0e1234&quot; == 0   //true
+</code></pre><p>(3)0x(十六进制的转换)开头的字符串会被解析成十进制再进行比较，所以0x开头的字符串与其十进制的字符串或者数值都是相等的，例：</p>
+<pre><code>&quot;0x1e240&quot; == &quot;123456&quot; //true
+&quot;0x1e240&quot; == 123456   //true
+&quot;0x1e240&quot; == &quot;1x1e240&quot;//false
+</code></pre><p>4.一些其他的类型转换：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$yzc=<span class="keyword">null</span>;</div><div class="line">$zzh=<span class="keyword">false</span>;</div><div class="line">$yzc == $zzh; <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$yzc=<span class="string">''</span>;</div><div class="line">$zzh=<span class="keyword">null</span>;</div><div class="line">$yzc == $zzh; <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<h3 id="0x03-内置函数的参数松散性"><a href="#0x03-内置函数的参数松散性" class="headerlink" title="0x03 内置函数的参数松散性"></a>0x03 内置函数的参数松散性</h3><p>1.定义：在调用函数时，给函数传递一个函数无法接受的参数类型</p>
+<p>2.出现参数松散性的函数：</p>
+<p>(1)md5()函数：</p>
+<p>PHP手册中的md5()函数的描述是<code>string md5 ( string $str [, bool $raw_output = false ] )</code>，md5函数定义中，函数接受的参数为字符串类型，那么如果传入的参数不是一个字符串而是一个数组的话，md5函数不会报错，只是无法计算出正确的结果，这样的话只要把数组传入md5()函数，计算出的结果都相等</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line">	$yzc = <span class="keyword">array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</div><div class="line">	$zzh = <span class="keyword">array</span>(<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>);</div><div class="line"></div><div class="line">	var_dump(md5($yzc) == md5($zzh));</div><div class="line"></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh12php%E5%BC%B1%E7%B1%BB%E5%9E%8B1.png" alt=""></p>
+<p>可以看到md5()函数接受了非字符串类型的参数，但依旧进行了计算</p>
+<p>(2)strcmp()函数(php的版本的小于5.3):</p>
+<p>PHP手册中strcmp()函数的描述是：<code>int strcmp ( string $str1 , string $str2 )</code> ，从该函数的定义可以看出需要向strcmp()函数传递两个字符串类型的变量。</p>
+<p>strcmp()函数的功能是比较两个字符串，本质是将两个字符串转换成ACIll值，然后根据计算结果返回值，如果 <code>$str1</code> 小于 <code>$str2</code> 返回-1；如果相等，返回0；否则返回1</p>
+<p>那么如果传入一个strcmp()函数无法接受的参数，比如数组，参数的类型不符合函数定义的类型，所以一旦传入，函数将发生错误，返回null。null 在前文讲过和 false 相等，就可以在比较中被认为是0</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line">	$yzc = <span class="keyword">array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</div><div class="line"></div><div class="line">	var_dump($yzc,<span class="string">'123'</span>);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh12php%E5%BC%B1%E7%B1%BB%E5%9E%8B2.png" alt=""></p>
+<p>(3)switch()函数:</p>
+<p>switch()函数如果为数字型case判断时，会将传入switch()函数的参数转换为int类型再进行case判断</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line">	$yzc =<span class="string">"2zzh"</span>;</div><div class="line">	<span class="keyword">switch</span> ($yzc) &#123;</div><div class="line">	<span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">	<span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">	<span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">	 <span class="keyword">echo</span> <span class="string">"yzc is less than 3 but not negative"</span>;</div><div class="line">	 <span class="keyword">break</span>;</div><div class="line">	<span class="keyword">case</span> <span class="number">3</span>:</div><div class="line">	 <span class="keyword">echo</span> <span class="string">"yzc is 3"</span>;</div><div class="line">	&#125;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh12php%E5%BC%B1%E7%B1%BB%E5%9E%8B3.png" alt=""></p>
+<p>(4)in_array()函数和array_search()函数</p>
+<p>PHP手册中in_array()函数的描述：<code>bool in_array ( mixed $needle , array $haystack [, bool $strict = FALSE ] )</code></p>
+<p>PHP手册中array_search()函数的描述：<code>mixed array_search ( mixed $needle , array $haystack [, bool $strict = false ] )</code></p>
+<p>以上两个函数的作用都是判断 <code>$needle</code> 变量是否存在于 <code>$haystack</code> 变量中，这两个函数还设置了一个 <code>$strict</code> 变量，默认值为 false ，如果值为true，会对两个变量的类型进行判断。</p>
+<p>在这两个函数中，进行查询也可以理解为判断 <code>$needle</code> == <code>$haystack</code>，这样的话如果<code>$needle</code>和<code>$haystack</code>分别是字符串类型和数值类型，就有可能使函数返回相等的显示</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">	$array=[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="string">'3'</span>];</div><div class="line">	var_dump(in_array(<span class="string">'abc'</span>, $array)); <span class="comment">//true</span></div><div class="line">	var_dump(in_array(<span class="string">'1bc'</span>, $array)); <span class="comment">//true</span></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p>字符串<code>&#39;abc&#39;</code>在比较时转换成了0，所以<code>&#39;abc&#39;</code>存在于<code>$array</code>中<br>字符串<code>&#39;1abc&#39;</code>在比较时转换成了1，所以<code>&#39;1abc&#39;</code>存在于<code>$array</code>中</p>
+<h3 id="0x04-实战中需要注意的地方："><a href="#0x04-实战中需要注意的地方：" class="headerlink" title="0x04 实战中需要注意的地方："></a>0x04 实战中需要注意的地方：</h3><p>1.md5()函数会产生<code>0e\d+</code>结构的字符串，前文说过<code>0e\d+</code>结构的字符串使用 <code>==</code> 比较都是相等的；但是如果使用 <code>===</code> 进行比较的话<code>0e\d+</code>结构的字符串是不相等的</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span>	$flag = <span class="string">"This is flag!"</span>;	<span class="keyword">echo</span> var_dump(md5($_GET[<span class="string">'a'</span>])).<span class="string">'&lt;br&gt;'</span>;	<span class="keyword">echo</span> var_dump(md5($_GET[<span class="string">'b'</span>])).<span class="string">'&lt;br&gt;'</span>;	<span class="keyword">echo</span> var_dump(md5($_GET[<span class="string">'a'</span>]) == md5($_GET[<span class="string">'b'</span>])).<span class="string">'&lt;br&gt;'</span>; <span class="comment">//true</span>	<span class="keyword">echo</span> var_dump(md5($_GET[<span class="string">'a'</span>]) === <span class="string">'0'</span>).<span class="string">'&lt;br&gt;'</span>; <span class="comment">//false</span>	<span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'a'</span>]) <span class="keyword">and</span> <span class="keyword">isset</span>($_GET[<span class="string">'b'</span>])) &#123;		<span class="keyword">if</span> ($_GET[<span class="string">'a'</span>] != $_GET[<span class="string">'b'</span>])&#123;			<span class="keyword">if</span> (md5($_GET[<span class="string">'a'</span>]) === md5($_GET[<span class="string">'b'</span>])) <span class="comment">//这里需要注意，是`===`而不是`==`</span>				<span class="keyword">die</span>(<span class="string">'Flag: '</span>.$flag);			<span class="keyword">else</span>				<span class="keyword">print</span> <span class="string">'Wrong.&lt;br&gt;'</span>;		&#125;	&#125;<span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p><code>$_GET[&#39;a&#39;]=QNKCDZO</code>&amp;<code>$_GET[&#39;b&#39;]=s214587387a</code>，这两个变量经过md5后都是<code>0e\d+</code>形式的字符串，我们构造的URL为：<code>http://ip/ceshi2.php?a=QNKCDZO&amp;b=s214587387a</code>，输出结果如下图，最后的回显是<code>Wrong</code>说明<code>md5($_GET[&#39;a&#39;]) === md5($_GET[&#39;b&#39;])</code>这条语句并不成立，两个变量的经过md5函数后并不<code>===</code>，我个人觉得原因在于<code>===</code>比较时，除了值要相等以外，类型也要相等。在比较时先确定了两个变量的类型，均为字符串类型，当类型确定下之后比较值的时候就是比较这两个字符串是否相同，图中的结果显示是不相同的。</p>
+<p>但是如果是<code>md5($_GET[&#39;a&#39;]) == md5($_GET[&#39;b&#39;])</code>这样的比较，那么就相等，因为在不比较类型的情况下，<code>0e\d+</code>字符串会被解析为科学计数法，从而导致连个变量相等。</p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh12php%E5%BC%B1%E7%B1%BB%E5%9E%8B4.png" alt=""></p>
+<p>所以如果是<code>===</code>，那么就要利用内置函数的参数松散性，使用md5()函数无法接受的参数，就比如我传进两个不相等的数组，这样md5()函数无法计算出正确的结果，从而导致<code>md5($_GET[&#39;a&#39;]) === md5($_GET[&#39;b&#39;])</code></p>
+<p>构造URL：<code>http://ip/ceshi2.php?a[]=aaa&amp;b[]=bbb</code></p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh12php%E5%BC%B1%E7%B1%BB%E5%9E%8B5.png" alt=""></p>
+
+  </div>
+  <!--评论块-->
+    
+
+</article>
+<nav class="post-nav">
+  <!-- Prev Nav -->
+    
+
+
+  <!-- Next Nav -->
+    
+  <a href="/2017/08/17/宽字节注入总结/" id="post_nav-older" class="post-nav-content next-content">
+      旧篇
+  </a>
+    
+</nav>
+<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
+<div class="post-toc-none"><p>(无)</p></div>
+<div class="post-toc-box">
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#PHP弱类型"><span class="post-toc-number">1.</span> <span class="post-toc-text">PHP弱类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x01-PHP弱类型的介绍"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">0x01 PHP弱类型的介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x02-弱类型中的类型转换"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">0x02 弱类型中的类型转换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x03-内置函数的参数松散性"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">0x03 内置函数的参数松散性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x04-实战中需要注意的地方："><span class="post-toc-number">1.0.4.</span> <span class="post-toc-text">0x04 实战中需要注意的地方：</span></a></li></ol></li></ol></li></ol>
+</div>
+<!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
+<script type="text/javascript">
+    menu();
+</script>
+  </div>
+</div>
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <a  id="top-button" onfocus="this.blur();"><div class="up upinbody" style="background-color:#26A69A"><i class="material-icons material-up">vertical_align_top</i></div></a>
+
+
+<p >Copyright ©  2017  yzc&#39;s blog</p>
+<p >Powered by <a href="https://hexo.io/" target="_blank"> Hexo </a> & Theme - <a href="https://github.com/moumao/hexo-theme-Vateral" target="_blank">Vateral</a></p>
+<p style="font-size: 10px" id="footer-times" data-time="7/28/2017 00:00:00"></p>
+<script>
+    var beginTime=document.getElementById("footer-times").dataset.time
+    function show_date_time(){
+        var span=document.getElementById("footer-times")
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date(beginTime);//初始日期
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=Math.floor(e_hrsold);
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=Math.floor((e_hrsold-hrsold)*60);
+        seconds=Math.floor((e_minsold-minsold)*60);
+        span.innerHTML="本站已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+    }
+    show_date_time();
+</script>
+
+  </div>
+</div>
+
+<!--影集界面需要的资源-->
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/materialize.min.js"></script>
+
+<script src="/js/main.min.js"></script>
+
+
+<script>
+    NProgress.start();
+    NProgress.done();
+    lazy();
+    links();
+    window.onpopstate = menu();
+    //pjax操作
+    $(document).pjax('a:not(.nopjax)', '#content-inner', {fragment:'#content-inner', timeout:8000});
+    $(document).on('pjax:start', NProgress.start).on('pjax:end', NProgress.done)
+        .on('pjax:end', () => {
+            dowmdiv();
+            lazy();
+            toc();
+            links();
+            menu();
+        });
+</script>
+
+</body>
+</html>

@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[PHP弱类型]]></title>
-      <url>/2017/08/17/PHP%E5%BC%B1%E7%B1%BB%E5%9E%8B/</url>
+      <url>/2017/09/19/PHP%E5%BC%B1%E7%B1%BB%E5%9E%8B/</url>
       <content type="html"><![CDATA[<h1 id="PHP弱类型"><a href="#PHP弱类型" class="headerlink" title="PHP弱类型"></a>PHP弱类型</h1><h3 id="0x01-PHP弱类型的介绍"><a href="#0x01-PHP弱类型的介绍" class="headerlink" title="0x01 PHP弱类型的介绍"></a>0x01 PHP弱类型的介绍</h3><p>弱类型的语言对变量的数据类型没有限制，你可以在任何地时候将变量赋值给任意的其他类型的变量，同时变量也可以转换成任意地其他类型的数据。</p>
 <p>类型转换是无法避免的，当不同类型的变量进行比较，或者接受参数，又或者两个变量类型不匹配的情况下，PHP都会自动进行类型转换，但正是由于PHP这种弱类型语言的特性，导致在类型转换的时候会出现各种各样的为题。</p>
 <h3 id="0x02-弱类型中的类型转换"><a href="#0x02-弱类型中的类型转换" class="headerlink" title="0x02 弱类型中的类型转换"></a>0x02 弱类型中的类型转换</h3><p>1.<code>字符串</code>转换为<code>数值</code>时的数值类型问题：</p>
@@ -780,14 +780,14 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
   
     
     <entry>
-      <title><![CDATA[friends]]></title>
-      <url>/friends/index.html</url>
+      <title><![CDATA[关于]]></title>
+      <url>/about/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[关于]]></title>
-      <url>/about/index.html</url>
+      <title><![CDATA[friends]]></title>
+      <url>/friends/index.html</url>
       <content type="html"></content>
     </entry>
     
