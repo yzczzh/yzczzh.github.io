@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+  <meta name="keywords" content="yzc&#39; Blog">
+  <meta name="description" content="欢迎来到我的博客，这里将记录我的学习经历和心得体会，希望能给看过的人带来帮助">
+  
+  <title>yzc&#39;s blog</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/materialize.min.css">
+    
+      <link rel="stylesheet" href="/css/main.min.css">
+    
+  
+  <style type="text/css">
+      html{
+          font-family: sans-serif;
+          font-weight: 300;
+      }
+      @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(/fonts/MaterialIcons-Regular.eot);
+          src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+          url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+          url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+      }
+  </style>
+</head>
+<body>
+<div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
+<div id="menu-outer">
+  <div id="menu-inner">
+      <ul id="slide-out" class="side-nav" >
+    <div class="nav-header"  style="background-image: url(http://oujzxyfkr.bkt.clouddn.com/%E5%8D%9A%E5%AE%A2%E5%A4%B4%E5%83%8F%E8%83%8C%E6%99%AF%E6%A0%8F%E5%9B%BE%E7%89%87.jpg);background-color:#26A69A">
+    <div class="header-box"><img src="http://oujzxyfkr.bkt.clouddn.com/%E5%8D%9A%E5%AE%A2%E5%A4%B4%E5%83%8F.jpg" ondragstart="return false;"></div>
+    <p>yzc</p>
+    <div class="nav-link">
+        
+        <a href="http://example.com" target="_blank"> <div class="link-box twitter"></div></a>
+        
+        
+        <a  href="https://github.com/yzczzh" target="_blank"><div class="link-box github"></div></a>
+        
+        
+        <a href="mailto:yzczzh@163.com"><div class="link-box email"></div></a>
+        
+        
+        <a href="http://example.com" target="_blank"><div class="link-box weibo"></div></a>
+        
+        
+        <a href="http://example.com" target="_blank"> <div class="link-box zhihu"></div></a>
+        
+    </div>
+    <div class="nav-search">
+        <form id="search-form"> <!-- 搜索框相关 -->
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索..." class="search form-control" autocomplete="off" autocorrect="off"/>
+            <div class="nav-search-img"><i class="material-icons">search</i></div>
+        </form>
+        <div id="local-search-result"></div> <!-- 搜索结果区 -->
+        <p class='no-result'>无搜索结果</p>
+    </div>
+</div>
+    <!--Homepage-->
+
+<li class="nav-list">
+    <a href="/" target="_self">
+        <div class="nav-ico"><i class="material-icons">home</i> </div><p>主页</p>
+    </a>
+</li>
+
+<!--archives-->
+
+<li class="nav-list dropdown-btn">
+    <a  class=""  target="_self">
+        <div class="nav-ico"><i class="material-icons">assignment</i></div><p>归档</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        <a class="archive-link" href="/archives/2017/09/">September 2017<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/08/">August 2017<span class="archive-count">9</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">2</span></a>
+    </li>
+</ul>
+<!--categories-->
+
+<li class="nav-list dropdown-btn">
+    <a   class=""  target="_self">
+        <div class="nav-ico"><i class="material-icons">dashboard</i></div><p>分类</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        <a class="category-link" href="/categories/Laravel-学习/">Laravel 学习<span class="category-count">3</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/ctf/">ctf<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/工具/">工具<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/提权/">提权<span class="category-count">4</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/日常/">日常<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/注入/">注入<span class="category-count">2</span></a>
+    </li>
+</ul>
+<!--tags-->
+
+<li class="nav-list">
+    <a href="/archives" target="_self">
+        <div class="nav-ico"><i class="material-icons">bookmark</i> </div><p>标签</p>
+    </a>
+</li>
+
+<!--photo-->
+
+<li class="nav-list">
+    <a href="/photo" class="nopjax" target="_self">
+        <div class="nav-ico"><i class="material-icons">insert_photo</i> </div><p>影集</p>
+    </a>
+</li>
+
+<!--friends-->
+
+<li class="nav-list">
+    <a href="/friends" target="_self">
+        <div class="nav-ico"><i class="material-icons">face</i> </div><p>友链</p>
+    </a>
+</li>
+
+<!--about-->
+
+<li class="nav-list">
+    <a href="/about" target="_self">
+        <div class="nav-ico"><i class="material-icons">copyright</i> </div><p>关于</p>
+    </a>
+</li>
+
+
+</ul>
+
+  </div>
+</div>
+
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AEbj.jpg)" >
+  <h2>文件包含漏洞--常见封装协议的利用</h2>
+    
+  <p>作者:yzc &nbsp&nbsp 发布于:<time datetime="2017-09-25T15:00:00.000Z">
+          2017-09-25
+    </time>
+  </p>
+    
+  </div>
+  <div class="post-page-content">
+  <h1 id="文件包含漏洞–常见封装协议的利用"><a href="#文件包含漏洞–常见封装协议的利用" class="headerlink" title="文件包含漏洞–常见封装协议的利用"></a>文件包含漏洞–常见封装协议的利用</h1><h3 id="0x01-php流input-allow-url-include-On"><a href="#0x01-php流input-allow-url-include-On" class="headerlink" title="0x01 php流input(allow_url_include=On)"></a>0x01 php流input(allow_url_include=On)</h3><p><code>php://input</code>是一个只读信息流，当在POST请求(通常只针对POST，而不是其他的请求)下，且 <code>enctype</code> 不等于<code>&quot;multipart/form-data&quot;</code>时，使用<code>php://input</code>代替<code>$HTTP_RAW_POST_DATA</code>，因为<code>php://input</code>可以不依赖于特定的<code>php.ini</code>指令</p>
+<p>form表单中的enctype属性指定将数据发回到服务器时浏览器使用的编码类型。enctype=”multipart/form-data” 的时候 php://input 是无效的。</p>
+<p>php://input如果要使用，需要 <code>allow_url_include=On</code> </p>
+<p>实例：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">    <span class="keyword">include</span>($_GET[<span class="string">'f'</span>]);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE1.png" alt=""></p>
+<h3 id="0x02-php流filter"><a href="#0x02-php流filter" class="headerlink" title="0x02 php流filter"></a>0x02 php流filter</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php://filter 是一种元封装器， 设计用于数据流打开时的筛选过滤应用。 这对于一体式（all-in-one）的文件函数非常有用，类似 readfile()、 file() 和 file_get_contents()， 在数据流内容读取之前没有机会应用其他过滤器。</div></pre></td></tr></table></figure>
+<p>这句话的大体意思是：数据流在读取或写入资源之前会进行用户事先安排好的一些过滤操作，如对数据流进行base64编码或解码操作，对数据流进行rot13编码操作或去除HTML标签操作等。</p>
+<p>但是php://filter存在文件包含漏洞，可以用来读取服务器上的文件内容，而且不需要开启allow_url_include，基本的读取文件格式如下：</p>
+<p>php://filter/read=convert.base64-encode/resource=[文件路径]</p>
+<p>这句话的意思是：将想要读取的文件经过base64加密读取出来</p>
+<p>实例：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">    <span class="keyword">include</span>($_GET[<span class="string">'f'</span>]);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p>还是相同的一个PHP文件，但是使用php://filter来实现读取文件，下面是我们需要读取的文件，名为<code>phpfilter.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span> 	<span class="keyword">echo</span> <span class="string">"php://filter"</span>;<span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE4.png" alt=""></p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE5.png" alt=""></p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE6.png" alt=""></p>
+<p>是不是和代码一致？这样就通过php://filter读取了文件</p>
+<p>下图是自己总结的关于php://filter的更具体的用法示意图，可以利用php://filter数据流绕过<code>死亡exit</code>，进而将webshell直接传到目标服务器上</p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE3.png" alt=""></p>
+<p>将举几个例子来讲解</p>
+<p>实例代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">    $content = <span class="string">'&lt;?php exit; ?&gt;'</span>;</div><div class="line">    $content .= $_POST[<span class="string">'txt'</span>];</div><div class="line">    file_put_contents($_POST[<span class="string">'filename'</span>], $content);</div></pre></td></tr></table></figure>
+<p>1.利用base64解码过滤器去除<code>死亡exit</code></p>
+<p>通过分析代码可知，在我们以POST方式上传<code>txt</code>之前，变量<code>$content</code>的前面会被加上<code>&lt;?php exit; ?&gt;</code>，这样就导致即使上传了webshell也无法成功的执行(实战中经常遇到)，但是我们发现<code>$_POST[&#39;filename&#39;]</code>是可以控制协议的，于是就想到可以使用<code>php://filter</code>流进行绕过</p>
+<p>那么具体怎么绕过呢？这里就需要用到<code>php://filter</code>流中的<code>base64-decode</code>方法了。</p>
+<pre><code>base64编码中只包含64个可打印字符，而PHP在解码base64时，遇到不在其中的字符时，将会跳过这些字符，仅将合法字符组成一个新的字符串进行解码。
+</code></pre><p>这句话就是关键，base64解码时会将不在64个可打印字符中的符号去掉，<code>&lt;?php exit; ?&gt;</code>中<code>&lt;</code>、<code>&gt;</code>、<code>?</code>、<code>;</code>几个符号均不在base64解码可打印的符号中，所以在解码的过程中会被去掉，这样一来经过<code>base64-decode</code>方法后<code>&lt;?php exit; ?&gt;</code>会变成<code>phpexit</code>总共七个字符，又因为base64算法解码时4个<code>byte</code>为一组，所以需要给<code>phpexit</code>加上一个字符，凑够8个字符，组成一个<code>byte</code>。</p>
+<pre><code>需要注意的是如果以后需要使用这个方法进行绕过时，可能经过base64解码后的字符串有可能不是8的倍数，将字符串凑成8的倍数才能实现绕过
+</code></pre><p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE12.png" alt=""></p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE13.png" alt=""></p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE14.png" alt=""></p>
+<p>2.利用<code>strip_tags函数</code> + <code>base64-decode</code>方法去除<code>死亡exit</code></p>
+<pre><code>strip_tags函数：剥去字符串中的HTML标签
+</code></pre><p><code>php://filter</code>数据流支持使用这个方法，同时也支持多种方法同时使用，这样的话就可以利用这两种方法的组合去除<code>死亡exit</code>并实现webshell的写入，具体方法如下：</p>
+<p><code>&lt;?php exit; ?&gt;</code>在被<code>strip_tags</code>方法处理后会被去掉，但是如果我们要写入对方服务器的webshell文件的内容也是采用明文的话，同样也会被<code>strip_tags</code>方法去除掉，所以需要对写入对方服务器的webshell文件的内容进行base64编码，这样的话，写入对方服务器的webshell文件的内容就不存在HTML标签，也就不会被<code>strip_tags</code>方法处理，之后<code>php://filter</code>中使用<code>base64-decode</code>方法对其进行解码，成功的写入</p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE15.png" alt=""></p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE16.png" alt=""></p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE17.png" alt=""></p>
+<p>3.利用rot13编码去除<code>死亡exit</code></p>
+<pre><code>ROT13（回转13位，rotateby13places，有时中间加了个减号称作ROT-13）是一种简易的置换暗码。ROT13是它自己本身的逆反；也就是说，要还原ROT13，套用加密同样的算法即可得，故同样的操作可用再加密与解密。
+</code></pre><p>值得注意的是<code>ROT13是它自己本身的逆反还原ROT13，套用加密同样的算法即可得，故同样的操作可用再加密与解密。</code>，利用这个原理，可以先对我们要写入对方服务器的webshell文件的内容进行rot13编码，这样的话<code>&lt;?php exit; ?&gt;</code>在进行rot13解码时将会被解码成rot13编码的形式，这样的代码，PHP将无法识别，所以可以绕过<code>死亡exit</code></p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE18.png" alt=""></p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE19.png" alt=""></p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE20.png" alt=""></p>
+<h3 id="0x03-data-URLs-allow-url-include-On"><a href="#0x03-data-URLs-allow-url-include-On" class="headerlink" title="0x03 data URLs(allow_url_include=On)"></a>0x03 data URLs(allow_url_include=On)</h3><p>php 的 data:// 是一个数据流封装器，基本用法如下：</p>
+<pre><code>data://text/plain;base64,
+</code></pre><p>其中<code>data://</code>为协议名，<code>text/plain</code>是需要封装的数据的格式，也可以封装图片文件；之后的<code>base64</code>是数据需要被进行base64编码；再之后就是需要封装的数据了。</p>
+<p>可以利用这个协议的漏洞将文件包含漏洞变成代码执行漏洞，下面举实例演示：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">    <span class="keyword">include</span>($_GET[<span class="string">'f'</span>]);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE7.png" alt=""></p>
+<p>通过将<code>&lt;?php echo &quot;data://text/plain;base64&quot; ?&gt;</code> 这句代码进行base64编码过后，利用<code>data://text/plain;base64,代码</code>就可以执行该代码。</p>
+<p>值得注意的是<code>&lt;?php echo &quot;data://text/plain;base64&quot; ?&gt;</code>这句代码<code>?&gt;</code>前加了一个空格，如果没有这个空格，命令将无法执行，如果怕忘记这个规则，可以直接不加<code>?&gt;</code>，代码也可以执行</p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE8.png" alt=""></p>
+<h3 id="0x04-zip协议"><a href="#0x04-zip协议" class="headerlink" title="0x04 zip协议"></a>0x04 zip协议</h3><p>可以利用zip协议来读取文件，zip协议的格式是：</p>
+<pre><code>zip://zip文件目录/xxx.zip%23xxx.zip中的文件
+</code></pre><p>这个协议的文件读取漏洞可以结合文件上传漏洞，先上传一个xxx.zip文件，这个压缩文件中包含我们想要读取的文件(比如webshell文件)</p>
+<p>需要注意的是URL编码，也就是zip协议格式中的<code>%23(#)</code>，<code>#</code>会与URL协议中的<code>#</code>冲突，所以在使用zip协议的时候需要把<code>#</code>转换成<code>%23</code></p>
+<p>还有一点就是可以把<code>.zip</code>后缀改成<code>.jpg</code>后缀，这样也可以成功，这个技巧有时可以绕过上传的限制，格式为：</p>
+<pre><code>zip://zip文件目录/xxx.jpg%23xxx.zip中的文件
+</code></pre><p>下面是实例：</p>
+<p>phpzip.php代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span>    <span class="keyword">include</span>(<span class="string">'funct.php'</span>);    $file = $_GET[<span class="string">'file'</span>];    $ext = get_extension($file);    $bz = check_extension($ext);    <span class="keyword">if</span>($bz)&#123;        <span class="keyword">include</span>($file);    &#125;<span class="keyword">else</span>&#123;        <span class="keyword">include</span>($file . <span class="string">'.php'</span>);    &#125;<span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p>funct.php代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span>    <span class="function"><span class="keyword">function</span> <span class="title">get_extension</span><span class="params">($f)</span></span>&#123;        <span class="keyword">return</span> pathinfo($f, PATHINFO_EXTENSION);    &#125;     <span class="function"><span class="keyword">function</span> <span class="title">check_extension</span><span class="params">($f)</span></span>&#123;        <span class="keyword">if</span>($f == <span class="string">'php'</span>)&#123;            <span class="keyword">return</span> <span class="keyword">true</span>;        &#125;<span class="keyword">else</span>&#123;            <span class="keyword">return</span> <span class="keyword">false</span>;        &#125;    &#125;<span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p>创建一个php文件，如<code>1.php</code>，之后对<code>1.php</code>进行压缩，压缩为<code>1.zip</code></p>
+<p>1.php代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span>	<span class="keyword">echo</span> <span class="string">"zip:// zipd'sir/xxx.zip%23xxx.zip'sfile"</span>;<span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE9.png" alt=""></p>
+<p>.jpg形式：</p>
+<p><img src="media/15060753773903/15062756750310.jpg" alt=""></p>
+<h3 id="0x05-phar协议"><a href="#0x05-phar协议" class="headerlink" title="0x05 phar协议"></a>0x05 phar协议</h3><p>phar协议的作用是将php文件归档到一个文件包中，功能与zip协议类似。</p>
+<p>若要使用此协议，PHP版本要大于5.3.0</p>
+<p>创建phar归档文件包时，需要注意的是<code>php.ini</code>文件的<code>phar.readonly</code>参数要设置成Off(<code>php.ini</code>文件里有两个都需要设置成Off)</p>
+<p>实例：</p>
+<p>1.利用脚本生成phar归档文件包</p>
+<p>phar.php源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span>	$p = <span class="keyword">new</span> PharData(dirname(<span class="keyword">__FILE__</span>).<span class="string">'/pharphar.aaa'</span>, <span class="number">0</span>,<span class="string">'pharphar'</span>,Phar::ZIP) ; 	$p-&gt;addFromString(<span class="string">'phar.txt'</span>, <span class="string">'&lt;?php echo dirname(__FILE__);?&gt;'</span>); <span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE21.png" alt=""></p>
+<p>也可以自己生成，即新建一个<code>phar.txt</code>文件，文件中写入需要执行的php代码，之后进行zip压缩，之后可以任意的修改后缀名，也可以生成一个归档文件包。</p>
+<p>生成文件包的工作在本地完成，之后将归档文件包上传到目标机，之后利用phar协议执行归档文件包中的txt文件(以php文件的格式执行)</p>
+<p><img src="http://oujzxyfkr.bkt.clouddn.com/yzczzh13%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%8D%8F%E8%AE%AE11.png" alt=""></p>
+<p>参考文章：<br><a href="http://www.cnblogs.com/qing123/p/4513870.html" target="_blank" rel="external">php://input,php://filter,data URI schema的那些事</a><br><a href="http://www.cnblogs.com/iamstudy/articles/include_file.html" target="_blank" rel="external">文件包含漏洞小结</a><br><a href="https://bbs.ichunqiu.com/forum.php?mod=viewthread&amp;tid=16207" target="_blank" rel="external">一道ctf场景还原&amp;&amp;防御攻破</a><br><a href="https://www.leavesongs.com/PENETRATION/php-filter-magic.html" target="_blank" rel="external">谈一谈php://filter的妙用</a></p>
+
+  </div>
+  <!--评论块-->
+    
+
+</article>
+<nav class="post-nav">
+  <!-- Prev Nav -->
+    
+
+
+  <!-- Next Nav -->
+    
+  <a href="/2017/09/19/PHP弱类型/" id="post_nav-older" class="post-nav-content next-content">
+      旧篇
+  </a>
+    
+</nav>
+<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
+<div class="post-toc-none"><p>(无)</p></div>
+<div class="post-toc-box">
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#文件包含漏洞–常见封装协议的利用"><span class="post-toc-number">1.</span> <span class="post-toc-text">文件包含漏洞–常见封装协议的利用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x01-php流input-allow-url-include-On"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">0x01 php流input(allow_url_include=On)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x02-php流filter"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">0x02 php流filter</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x03-data-URLs-allow-url-include-On"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">0x03 data URLs(allow_url_include=On)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x04-zip协议"><span class="post-toc-number">1.0.4.</span> <span class="post-toc-text">0x04 zip协议</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0x05-phar协议"><span class="post-toc-number">1.0.5.</span> <span class="post-toc-text">0x05 phar协议</span></a></li></ol></li></ol></li></ol>
+</div>
+<!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
+<script type="text/javascript">
+    menu();
+</script>
+  </div>
+</div>
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <a  id="top-button" onfocus="this.blur();"><div class="up upinbody" style="background-color:#26A69A"><i class="material-icons material-up">vertical_align_top</i></div></a>
+
+
+<p >Copyright ©  2017  yzc&#39;s blog</p>
+<p >Powered by <a href="https://hexo.io/" target="_blank"> Hexo </a> & Theme - <a href="https://github.com/moumao/hexo-theme-Vateral" target="_blank">Vateral</a></p>
+<p style="font-size: 10px" id="footer-times" data-time="7/28/2017 00:00:00"></p>
+<script>
+    var beginTime=document.getElementById("footer-times").dataset.time
+    function show_date_time(){
+        var span=document.getElementById("footer-times")
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date(beginTime);//初始日期
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=Math.floor(e_hrsold);
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=Math.floor((e_hrsold-hrsold)*60);
+        seconds=Math.floor((e_minsold-minsold)*60);
+        span.innerHTML="本站已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+    }
+    show_date_time();
+</script>
+
+  </div>
+</div>
+
+<!--影集界面需要的资源-->
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/materialize.min.js"></script>
+
+<script src="/js/main.min.js"></script>
+
+
+<script>
+    NProgress.start();
+    NProgress.done();
+    lazy();
+    links();
+    window.onpopstate = menu();
+    //pjax操作
+    $(document).pjax('a:not(.nopjax)', '#content-inner', {fragment:'#content-inner', timeout:8000});
+    $(document).on('pjax:start', NProgress.start).on('pjax:end', NProgress.done)
+        .on('pjax:end', () => {
+            dowmdiv();
+            lazy();
+            toc();
+            links();
+            menu();
+        });
+</script>
+
+</body>
+</html>

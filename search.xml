@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[文件包含漏洞--常见封装协议的利用]]></title>
-      <url>/2017/09/25/PHP%E5%BC%B1%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%89%AF%E6%9C%AC/</url>
+      <url>/2017/09/25/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E--%E5%B8%B8%E8%A7%81%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%88%A9%E7%94%A8/</url>
       <content type="html"><![CDATA[<h1 id="文件包含漏洞–常见封装协议的利用"><a href="#文件包含漏洞–常见封装协议的利用" class="headerlink" title="文件包含漏洞–常见封装协议的利用"></a>文件包含漏洞–常见封装协议的利用</h1><h3 id="0x01-php流input-allow-url-include-On"><a href="#0x01-php流input-allow-url-include-On" class="headerlink" title="0x01 php流input(allow_url_include=On)"></a>0x01 php流input(allow_url_include=On)</h3><p><code>php://input</code>是一个只读信息流，当在POST请求(通常只针对POST，而不是其他的请求)下，且 <code>enctype</code> 不等于<code>&quot;multipart/form-data&quot;</code>时，使用<code>php://input</code>代替<code>$HTTP_RAW_POST_DATA</code>，因为<code>php://input</code>可以不依赖于特定的<code>php.ini</code>指令</p>
 <p>form表单中的enctype属性指定将数据发回到服务器时浏览器使用的编码类型。enctype=”multipart/form-data” 的时候 php://input 是无效的。</p>
 <p>php://input如果要使用，需要 <code>allow_url_include=On</code> </p>
@@ -896,14 +896,14 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
     </entry>
     
     <entry>
-      <title><![CDATA[friends]]></title>
-      <url>/friends/index.html</url>
+      <title><![CDATA[关于]]></title>
+      <url>/about/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[关于]]></title>
-      <url>/about/index.html</url>
+      <title><![CDATA[friends]]></title>
+      <url>/friends/index.html</url>
       <content type="html"></content>
     </entry>
     
